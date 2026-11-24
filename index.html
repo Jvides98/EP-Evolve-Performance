@@ -6,22 +6,26 @@
     <title>EP EVOLVE PERFORMANCE</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* VARIABLES DE DISEÑO */
+        /* VARIABLES DE DISEÑO COHERENTES */
         :root {
             --bg-dark: #07090e;
             --bg-card: #0f1319;
             --neon-blue: #00f3ff;
             --neon-blue-glow: rgba(0, 243, 255, 0.35);
-            --text-main: #f3f4f6;
-            --text-muted: #10b981; /* Verde esmeralda para el contraste */
-            --text-desc: #9ca3af;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --text-main: #ffffff;
+            --text-desc: #e5e7eb;
+            --accent-green: #10b981;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -32,190 +36,301 @@
             overflow-x: hidden;
         }
 
-        /* HEADER Y HÉROE CON IMAGEN DE FONDO */
+        /* HEADER Y HÉROE */
         header {
             text-align: center;
-            padding: 140px 20px 80px;
+            padding: 160px 20px 100px;
             position: relative;
-            background: linear-gradient(180deg, rgba(7, 9, 14, 0.5) 0%, var(--bg-dark) 100%), 
+            background: linear-gradient(180deg, rgba(7, 9, 14, 0.4) 0%, var(--bg-dark) 100%),
                         url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
             border-bottom: 2px solid var(--neon-blue-glow);
         }
 
         .logo {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 900;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            text-shadow: 0 0 20px var(--neon-blue);
+            text-shadow: 0 0 25px var(--neon-blue);
             color: var(--neon-blue);
             margin-bottom: 15px;
         }
 
         .tagline {
-            font-size: 1.4rem;
-            color: #e5e7eb;
+            font-size: 1.5rem;
+            color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* CONTENEDOR GENERAL RESPONSIVO (PC & MÓVIL) */
+        /* CONTENEDOR GENERAL */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
-        /* SECCIONES */
+        /* SECCIONES EN MODO OSCURO PREMIUM */
         section {
             background: var(--bg-card);
-            border: 1px solid rgba(0, 243, 255, 0.1);
-            border-radius: 20px;
-            padding: 35px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            transition: border-color 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.12);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         section:hover {
             border-color: var(--neon-blue);
+            box-shadow: 0 15px 50px rgba(0, 243, 255, 0.05);
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--neon-blue);
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             border-bottom: 1px solid var(--neon-blue-glow);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            letter-spacing: 1px;
         }
 
-        /* GRID DE TARJETAS (Autoadaptable para PC y Celular) */
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        /* TARJETAS INTERACTIVAS CON FONDO DE IMAGEN */
-        .interactive-card {
-            position: relative;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Fondos individuales de tarjetas */
-        .card-fuerza { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop'); }
-        .card-potencia { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600&auto=format&fit=crop'); }
-        .card-coordinacion { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop'); }
-        .card-resistencia { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600&auto=format&fit=crop'); }
-
-        .interactive-card:hover {
-            box-shadow: 0 0 20px var(--neon-blue-glow);
-            transform: translateY(-4px);
-            border-color: var(--neon-blue);
-        }
-
-        .card-header-click {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .card-header-click i.main-icon {
-            font-size: 1.5rem;
-            color: var(--neon-blue);
-            margin-right: 12px;
-        }
-
-        .card-header-click .arrow-icon {
-            color: #fff;
-            transition: transform 0.3s ease;
-        }
-
-        /* DETALLE DESPLEGABLE */
-        .card-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease-out, margin-top 0.35s ease;
-            color: var(--text-desc);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .interactive-card.active .card-details {
-            max-height: 180px;
-            margin-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 12px;
-        }
-
-        .interactive-card.active .arrow-icon {
-            transform: rotate(180deg);
-            color: var(--neon-blue);
-        }
-
-        /* GALERÍA DE IMÁGENES PREMIUM REALES */
+        /* GALERÍA DE IMÁGENES INTERACTIVAS */
         .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .visual-card {
             position: relative;
-            border-radius: 15px;
-            height: 260px;
+            border-radius: 20px;
+            height: 280px;
             overflow: hidden;
-            border: 1px solid rgba(0, 243, 255, 0.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .visual-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
+        }
+
+        .visual-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 12px 30px var(--neon-blue-glow);
         }
 
         .visual-card:hover img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
 
         .visual-card .overlay-label {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to top, rgba(7,9,14,0.9) 0%, transparent 100%);
-            padding: 20px;
+            background: linear-gradient(to top, rgba(7,9,14,0.95) 10%, rgba(7,9,14,0.4) 60%, transparent 100%);
+            padding: 25px;
             font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+            font-size: 1.25rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: var(--neon-blue);
+            color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .visual-card .overlay-label span {
+            color: var(--neon-blue);
+        }
+
+        /* GRID DE DISCIPLINAS */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        /* TARJETAS DE DISCIPLINAS MEJORADAS */
+        .interactive-card {
+            position: relative;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Fondos individuales de tarjetas */
+        .card-fuerza { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 30%, rgba(15,19,25,0.3)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop'); }
+        .card-potencia { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 30%, rgba(15,19,25,0.3)), url('https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600&auto=format&fit=crop'); }
+        .card-coordinacion { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 30%, rgba(15,19,25,0.3)), url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop'); }
+        .card-resistencia { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 30%, rgba(15,19,25,0.3)), url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600&auto=format&fit=crop'); }
+
+        .interactive-card:hover {
+            box-shadow: 0 10px 25px var(--neon-blue-glow);
+            transform: translateY(-6px);
+            border-color: var(--neon-blue);
+        }
+
+        .card-header-click { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+        }
+
+        .card-header-click i.main-icon {
+            font-size: 1.6rem;
+            color: var(--neon-blue);
+            margin-right: 12px;
+        }
+
+        .card-tap-hint {
+            font-size: 0.8rem;
+            color: var(--neon-blue);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* MODALES MODERNOS EMERGENTES */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(7, 9, 14, 0.95);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-blue);
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 0 40px var(--neon-blue-glow);
+            transform: translateY(30px);
+            transition: transform 0.4s ease;
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .modal-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--neon-blue);
+            transform: scale(1.15);
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .modal-desc {
+            font-size: 1.15rem;
+            color: var(--text-desc);
+            line-height: 1.8;
+            font-weight: 500;
+            border-left: 4px solid var(--neon-blue);
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .modal-accent-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .modal-accent-box h4 {
+            color: var(--accent-green);
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .modal-accent-box p {
+            font-size: 0.95rem;
+            color: #9ca3af;
         }
 
         /* PASOS DE METODOLOGÍA */
@@ -227,9 +342,9 @@
 
         .step-item {
             background: rgba(255, 255, 255, 0.01);
-            border-radius: 12px;
-            padding: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -254,29 +369,35 @@
         .step-number {
             background: var(--neon-blue);
             color: var(--bg-dark);
-            font-weight: bold;
+            font-weight: 900;
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 0 10px var(--neon-blue);
+            box-shadow: 0 0 12px var(--neon-blue);
+            font-size: 1.1rem;
+        }
+
+        .step-item strong {
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
         }
 
         .step-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, margin-top 0.3s ease;
-            color: var(--text-desc);
-            font-size: 0.95rem;
-            padding-left: 50px;
+            transition: max-height 0.35s ease-out, margin-top 0.35s ease;
+            color: #9ca3af;
+            font-size: 1rem;
+            padding-left: 53px;
         }
 
         .step-item.active .step-content {
             max-height: 150px;
-            margin-top: 12px;
+            margin-top: 15px;
         }
 
         .step-item.active .arrow-icon {
@@ -284,41 +405,55 @@
             color: var(--neon-blue);
         }
 
+        /* BENEFICIOS */
+        .benefit-card {
+            border-left: 4px solid var(--neon-blue) !important;
+            background: rgba(0, 243, 255, 0.01) !important;
+        }
+
+        /* SERVICIOS */
+        .service-card-bg {
+            background-image: linear-gradient(to top, rgba(15,19,25,0.98) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400');
+            background-size: cover;
+        }
+
         /* BOTÓN DE WHATSAPP */
         .whatsapp-btn {
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             background: #25d366;
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.25rem;
-            padding: 18px 45px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            padding: 20px 50px;
             border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.45);
             transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .whatsapp-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.7);
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 60px 20px;
-            font-size: 0.95rem;
-            color: var(--text-desc);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 70px 20px;
+            font-size: 1rem;
+            color: #9ca3af;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. INTRODUCCIÓN / HEADER CON FOTO EN ALTA RESOLUCIÓN -->
+    <!-- 1. INTRODUCCIÓN / HEADER -->
     <header>
         <div class="logo">EP EVOLVE PERFORMANCE</div>
         <div class="tagline">Descubre de lo que eres capaz / Vive mejor</div>
@@ -327,25 +462,25 @@
     <div class="container">
 
         <!-- Indicador de Interactividad -->
-        <p style="text-align: center; color: var(--neon-blue); font-size: 1rem; margin-bottom: 35px; letter-spacing: 1px; font-weight: bold;">
-            <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS PARA DESPLEGAR DETALLES
+        <p style="text-align: center; color: var(--neon-blue); font-size: 1.1rem; margin-bottom: 40px; letter-spacing: 1.5px; font-weight: 800;">
+            <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS O FOTOS PARA NAVEGAR Y EXPLORAR
         </p>
 
-        <!-- GALERÍA DE IMÁGENES REALES (Inspirado en el folleto) -->
+        <!-- GALERÍA DE IMÁGENES INTERACTIVAS (Redirección a las secciones) -->
         <section id="galeria">
-            <h2><i class="fas fa-images"></i> Galería del Centro & Entrenamiento</h2>
+            <h2><i class="fas fa-images"></i> Galería interactiva del centro</h2>
             <div class="image-gallery">
-                <div class="visual-card">
+                <div class="visual-card" onclick="scrollToSection('desarrollo')">
                     <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" alt="Zona de Fuerza">
-                    <div class="overlay-label"><i class="fas fa-dumbbell"></i> Entrenamiento de Fuerza</div>
+                    <div class="overlay-label"><i class="fas fa-dumbbell"></i> Programa de <span>Fuerza</span></div>
                 </div>
-                <div class="visual-card">
+                <div class="visual-card" onclick="scrollToSection('metodologia')">
                     <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600&auto=format&fit=crop" alt="Acondicionamiento">
-                    <div class="overlay-label"><i class="fas fa-bolt"></i> Alta Intensidad & Potencia</div>
+                    <div class="overlay-label"><i class="fas fa-tasks"></i> Ver <span>Metodología</span></div>
                 </div>
-                <div class="visual-card">
+                <div class="visual-card" onclick="scrollToSection('servicios')">
                     <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" alt="Asesoría">
-                    <div class="overlay-label"><i class="fas fa-user-shield"></i> Asesoría Profesional</div>
+                    <div class="overlay-label"><i class="fas fa-award"></i> Nuestros <span>Servicios</span></div>
                 </div>
             </div>
         </section>
@@ -354,45 +489,37 @@
         <section id="desarrollo">
             <h2><i class="fas fa-bolt"></i> ¿Qué desarrollamos?</h2>
             <div class="grid-cards">
-                
-                <div class="interactive-card card-fuerza" onclick="toggleCard(this)">
+
+                <div class="interactive-card card-fuerza" onclick="openModal('fuerza')">
                     <div class="card-header-click">
                         <span><i class="fas fa-dumbbell main-icon"></i>Fuerza</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Desarrollamos fuerza máxima y resistencia muscular mediante sobrecarga progresiva adaptada a tus objetivos específicos.
-                    </div>
+                    <span class="card-tap-hint">Tocar para ampliar</span>
                 </div>
 
-                <div class="interactive-card card-potencia" onclick="toggleCard(this)">
+                <div class="interactive-card card-potencia" onclick="openModal('potencia')">
                     <div class="card-header-click">
                         <span><i class="fas fa-running main-icon"></i>Potencia</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Entrenamientos explosivos que mejoran el reclutamiento de fibras rápidas, aumentando tu velocidad y reactividad muscular.
-                    </div>
+                    <span class="card-tap-hint">Tocar para ampliar</span>
                 </div>
 
-                <div class="interactive-card card-coordinacion" onclick="toggleCard(this)">
+                <div class="interactive-card card-coordinacion" onclick="openModal('coordinacion')">
                     <div class="card-header-click">
                         <span><i class="fas fa-sync-alt main-icon"></i>Coordinación</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Optimizamos tus patrones motores y estabilidad articular para que te muevas con mayor soltura, fluidez y seguridad.
-                    </div>
+                    <span class="card-tap-hint">Tocar para ampliar</span>
                 </div>
 
-                <div class="interactive-card card-resistencia" onclick="toggleCard(this)">
+                <div class="interactive-card card-resistencia" onclick="openModal('resistencia')">
                     <div class="card-header-click">
                         <span><i class="fas fa-heartbeat main-icon"></i>Resistencia</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Acondicionamiento cardiovascular avanzado para optimizar tu capacidad pulmonar y mantener un ritmo de alta intensidad por más tiempo.
-                    </div>
+                    <span class="card-tap-hint">Tocar para ampliar</span>
                 </div>
 
             </div>
@@ -403,7 +530,7 @@
             <h2><i class="fas fa-tasks"></i> Metodología de 5 Pasos</h2>
             <div class="step-list">
 
-                <div class="step-item" onclick="toggleCard(this)">
+                <div class="step-item" onclick="toggleStep(this)">
                     <div class="step-header">
                         <div class="step-title-wrapper">
                             <div class="step-number">1</div>
@@ -416,7 +543,7 @@
                     </div>
                 </div>
 
-                <div class="step-item" onclick="toggleCard(this)">
+                <div class="step-item" onclick="toggleStep(this)">
                     <div class="step-header">
                         <div class="step-title-wrapper">
                             <div class="step-number">2</div>
@@ -429,7 +556,7 @@
                     </div>
                 </div>
 
-                <div class="step-item" onclick="toggleCard(this)">
+                <div class="step-item" onclick="toggleStep(this)">
                     <div class="step-header">
                         <div class="step-title-wrapper">
                             <div class="step-number">3</div>
@@ -442,7 +569,7 @@
                     </div>
                 </div>
 
-                <div class="step-item" onclick="toggleCard(this)">
+                <div class="step-item" onclick="toggleStep(this)">
                     <div class="step-header">
                         <div class="step-title-wrapper">
                             <div class="step-number">4</div>
@@ -455,7 +582,7 @@
                     </div>
                 </div>
 
-                <div class="step-item" onclick="toggleCard(this)">
+                <div class="step-item" onclick="toggleStep(this)">
                     <div class="step-header">
                         <div class="step-title-wrapper">
                             <div class="step-number">5</div>
@@ -475,7 +602,7 @@
         <section id="beneficios">
             <h2><i class="fas fa-medal"></i> Beneficios del Programa</h2>
             <div class="grid-cards">
-                <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
+                <div class="step-item benefit-card" onclick="toggleStep(this)">
                     <div class="step-header">
                         <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Fuerza e Hipertrofia</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -484,7 +611,7 @@
                         Incremento sustancial de la fuerza general y masa muscular estructurada mediante programas científicamente validados.
                     </div>
                 </div>
-                <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
+                <div class="step-item benefit-card" onclick="toggleStep(this)">
                     <div class="step-header">
                         <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Energía Diaria Elevada</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -493,7 +620,7 @@
                         Optimización de los sistemas metabólicos para que experimentes niveles óptimos y estables de energía durante todo el día.
                     </div>
                 </div>
-                <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
+                <div class="step-item benefit-card" onclick="toggleStep(this)">
                     <div class="step-header">
                         <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Autonomía y Salud</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -509,64 +636,167 @@
         <section id="servicios">
             <h2><i class="fas fa-award"></i> Nuestros Servicios</h2>
             <div class="grid-cards">
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
+                <div class="interactive-card service-card-bg" onclick="openModal('personalizado')">
                     <div class="card-header-click">
                         <strong>Personalizado</strong>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Entrenamiento Individual presencial o guiado paso a paso con foco 100% en tu biomecánica única.
-                    </div>
+                    <span class="card-tap-hint">Ver más detalles</span>
                 </div>
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
+                <div class="interactive-card service-card-bg" onclick="openModal('rendimiento')">
                     <div class="card-header-click">
                         <strong>Rendimiento</strong>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Mejora deportiva para atletas y entusiastas que buscan explotar sus capacidades al límite.
-                    </div>
+                    <span class="card-tap-hint">Ver más detalles</span>
                 </div>
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
+                <div class="interactive-card service-card-bg" onclick="openModal('fuerzaServicio')">
                     <div class="card-header-click">
                         <strong>Fuerza</strong>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Acondicionamiento físico general mediante levantamiento y técnicas de fuerza seguras.
-                    </div>
+                    <span class="card-tap-hint">Ver más detalles</span>
                 </div>
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
+                <div class="interactive-card service-card-bg" onclick="openModal('online')">
                     <div class="card-header-click">
                         <strong>Online</strong>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
                     </div>
-                    <div class="card-details">
-                        Asesoría y acompañamiento a distancia de forma estructurada a través de plataformas digitales avanzadas.
-                    </div>
+                    <span class="card-tap-hint">Ver más detalles</span>
                 </div>
             </div>
         </section>
 
-        <!-- 6. CONTACTO (BOTÓN WHATSAPP CENTRADO) -->
+        <!-- 6. CONTACTO -->
         <section id="contacto" style="text-align: center; border-color: #25d366;">
             <h2><i class="fas fa-comments"></i> Contacto Directo</h2>
-            <p style="margin-bottom: 25px; color: var(--text-desc);">¿Listo para dar el primer paso? Habla directamente con nosotros.</p>
+            <p style="margin-bottom: 25px; color: var(--text-desc); font-size: 1.15rem;">¿Listo para dar el primer paso hacia tu transformación física? Chatea directamente con nosotros.</p>
             <a href="https://wa.me/573012430458?text=Hola%20EP%20Evolve%20Performance!%20Me%20interesa%20empezar%20mi%20preparacion%20fisica" target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp" style="font-size: 1.6rem;"></i> Escríbenos por WhatsApp
+                <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i> Escríbenos por WhatsApp
             </a>
         </section>
 
+    </div>
+
+    <!-- MODALES / PESTAÑAS MOMENTÁNEAS DETALLADAS -->
+    <div class="modal-overlay" id="customModal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="forceCloseModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-bg-image" id="modalBg"></div>
+            <div class="modal-content">
+                <div class="modal-title" id="modalTitle">Título</div>
+                <div class="modal-desc" id="modalDesc">Descripción llamativa...</div>
+                <div class="modal-accent-box">
+                    <h4 id="modalAccentTitle">Beneficio Clave</h4>
+                    <p id="modalAccentContent">Información extra...</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2025 EP EVOLVE PERFORMANCE. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- LÓGICA DE INTERACTIVIDAD PARA DESPLEGABLES -->
+    <!-- LÓGICA DE INTERACTIVIDAD -->
     <script>
-        function toggleCard(card) {
-            card.classList.toggle('active');
+        // Scroll suave al hacer clic en fotos de la galería
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Acordeones sencillos para pasos
+        function toggleStep(item) {
+            item.classList.toggle('active');
+        }
+
+        // Base de Datos de Información para los Modales con imágenes relacionadas
+        const modalData = {
+            fuerza: {
+                title: '<i class="fas fa-dumbbell"></i> Fuerza',
+                desc: 'La fuerza es la base de todo rendimiento físico humano. Implementamos programas estructurados de sobrecarga progresiva adaptados individualmente, enfocados en levantamientos multiarticulares que incrementan tu fuerza máxima y estimulan la hipertrofia muscular segura.',
+                accentTitle: 'Enfoque de Éxito',
+                accentContent: 'Previene la sarcopenia, acelera tu metabolismo basal y mejora tu densidad ósea desde la primera semana.',
+                bgUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600'
+            },
+            potencia: {
+                title: '<i class="fas fa-running"></i> Potencia',
+                desc: 'La potencia te permite aplicar la máxima cantidad de fuerza en el menor tiempo posible. Mediante pliometría y levantamientos dinámicos rápidos, optimizamos la velocidad de reclutamiento muscular para transformar tu cuerpo en una máquina explosiva y ágil.',
+                accentTitle: 'Beneficio Atlético',
+                accentContent: 'Mejora drásticamente tu reactividad, capacidad de salto y sprint, indispensables para cualquier disciplina deportiva.',
+                bgUrl: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600'
+            },
+            coordinacion: {
+                title: '<i class="fas fa-sync-alt"></i> Coordinación',
+                desc: 'Un cuerpo fuerte debe moverse con gracia y eficiencia. Nos enfocamos en el control motor fino, estabilidad lumbo-pélvica (Core) y equilibrio dinámico para que realices patrones de movimiento complejos con total naturalidad, reduciendo drásticamente el riesgo de lesiones.',
+                accentTitle: 'Sinergia Corporal',
+                accentContent: 'Perfecciona tu equilibrio postural y adquiere patrones de movimiento fluidos y elegantes transferibles al día a día.',
+                bgUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600'
+            },
+            resistencia: {
+                title: '<i class="fas fa-heartbeat"></i> Resistencia',
+                desc: 'Aumentamos tu umbral anaeróbico y tu eficiencia cardiovascular. Utilizando entrenamientos por intervalos de alta intensidad y acondicionamiento metabólico continuo, tu corazón y pulmones aprenderán a soportar esfuerzos extenuantes y a recuperarse en tiempo récord.',
+                accentTitle: 'Capacidad Pulmonar',
+                accentContent: 'Duplica tu energía diaria, optimiza la oxigenación celular y quema calorías de forma prolongada incluso post-entrenamiento.',
+                bgUrl: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600'
+            },
+            personalizado: {
+                title: '<i class="fas fa-user-check"></i> Personalizado',
+                desc: 'Un entrenador dedicado en exclusiva a supervisar tu biomecánica. Cada sesión se planifica al milímetro según tus necesidades del día, adaptando cargas y corrigiendo posturas en tiempo real para un progreso sin precedentes.',
+                accentTitle: 'Foco Absoluto',
+                accentContent: 'Ideal para quienes buscan progresar de manera segura, superar estancamientos o recuperarse activamente de lesiones.',
+                bgUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600'
+            },
+            rendimiento: {
+                title: '<i class="fas fa-trophy"></i> Alto Rendimiento',
+                desc: 'Destinado a atletas competitivos que buscan ese milisegundo o gramo de fuerza extra. Evaluamos tus debilidades atléticas y diseñamos bloques de periodización científica para llevarte a tu pico físico justo a tiempo para competir.',
+                accentTitle: 'Resultados de Élite',
+                accentContent: 'Preparación de alto nivel que incluye optimización de la fatiga sistémica y transferencia deportiva directa.',
+                bgUrl: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600'
+            },
+            fuerzaServicio: {
+                title: '<i class="fas fa-dumbbell"></i> Club de Fuerza',
+                desc: 'Nuestra metodología grupal enfocada en el dominio de barras, mancuernas y peso corporal. Aprende y progresa junto a un grupo apasionado bajo una planificación estructurada que no deja nada al azar.',
+                accentTitle: 'Comunidad Fuerte',
+                accentContent: 'Un ambiente competitivo y cooperativo que te retará a dar el máximo esfuerzo en cada serie programada.',
+                bgUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600'
+            },
+            online: {
+                title: '<i class="fas fa-laptop-house"></i> Asesoría Online',
+                desc: 'Tu plan de entrenamiento y pautas nutricionales directamente en tu celular, vivas donde vivas. Incluye revisiones semanales en video y soporte constante para ajustar el rumbo hacia tu meta.',
+                accentTitle: 'Libertad de Horarios',
+                accentContent: 'Lleva la calidad de EP EVOLVE PERFORMANCE contigo y entrena a tu propio ritmo con control profesional constante.',
+                bgUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600'
+            }
+        };
+
+        // Abrir Modal de forma Dinámica
+        function openModal(key) {
+            const data = modalData[key];
+            if (data) {
+                document.getElementById('modalTitle').innerHTML = data.title;
+                document.getElementById('modalDesc').innerHTML = data.desc;
+                document.getElementById('modalAccentTitle').innerText = data.accentTitle;
+                document.getElementById('modalAccentContent').innerText = data.accentContent;
+                document.getElementById('modalBg').style.backgroundImage = `url('${data.bgUrl}')`;
+                
+                document.getElementById('customModal').classList.add('active');
+            }
+        }
+
+        // Cerrar Modal al tocar fuera
+        function closeModal(event) {
+            if (event.target.id === 'customModal') {
+                forceCloseModal();
+            }
+        }
+
+        // Cerrar Modal desde el botón
+        function forceCloseModal() {
+            document.getElementById('customModal').classList.remove('active');
         }
     </script>
 
