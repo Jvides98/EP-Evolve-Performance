@@ -204,7 +204,7 @@
             border-color: var(--neon-blue);
         }
 
-        .card-header-click {
+        .card-header-click { 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -230,6 +230,118 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.8;
+        }
+
+        /* DISEÑO DE PASOS DE PROGRESO DE METODOLOGÍA */
+        .progress-steps-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .progress-steps-container::before {
+            content: '';
+            position: absolute;
+            left: 36px;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(180deg, var(--neon-blue) 0%, rgba(0, 243, 255, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .progress-step-card {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            z-index: 2;
+            cursor: pointer;
+            background: rgba(15, 19, 25, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 16px;
+            transition: all 0.35s ease;
+        }
+
+        .progress-step-card:hover, .progress-step-card.active {
+            border-color: var(--neon-blue);
+            background: rgba(0, 243, 255, 0.03);
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.05);
+        }
+
+        .step-badge {
+            background: var(--bg-dark);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step-card.active .step-badge {
+            background: var(--neon-blue);
+            border-color: var(--neon-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .step-body {
+            flex-grow: 1;
+        }
+
+        .step-body h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .progress-step-card.active .step-body h3 {
+            color: var(--neon-blue);
+        }
+
+        .step-info-text {
+            color: #9ca3af;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .progress-step-card.active .step-info-text {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 5px;
+        }
+
+        .step-arrow {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .progress-step-card.active .step-arrow {
+            transform: rotate(180deg);
+            color: var(--neon-blue);
         }
 
         /* MODALES MODERNOS EMERGENTES */
@@ -345,95 +457,12 @@
             color: #9ca3af;
         }
 
-        /* PASOS DE METODOLOGÍA */
-        .step-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            width: 100%;
-        }
-
-        .step-item {
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .step-item:hover {
-            border-color: var(--neon-blue-glow);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .step-title-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .step-number {
-            background: var(--neon-blue);
-            color: var(--bg-dark);
-            font-weight: 900;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 0 10px var(--neon-blue);
-            font-size: 1rem;
-        }
-
-        .step-item strong {
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .step-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease-out, margin-top 0.35s ease;
-            color: #9ca3af;
-            font-size: 0.95rem;
-            padding-left: 44px;
-        }
-
-        .step-item.active .step-content {
-            max-height: 200px;
-            margin-top: 12px;
-        }
-
-        .step-item.active .arrow-icon {
-            transform: rotate(180deg);
-            color: var(--neon-blue);
-        }
-
-        /* BENEFICIOS */
-        .benefit-card {
-            border-left: 4px solid var(--neon-blue) !important;
-            background: rgba(0, 243, 255, 0.01) !important;
-        }
-
-        /* SERVICIOS */
-        .service-card-bg {
-            background-image: linear-gradient(to top, rgba(15,19,25,0.98) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400');
-            background-size: cover;
-        }
-
         /* BOTÓN DE WHATSAPP */
+        .whatsapp-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
         .whatsapp-btn {
             display: inline-flex;
             justify-content: center;
@@ -483,7 +512,7 @@
                 padding: 20px 15px;
             }
             .visual-card {
-                height: 210px; /* Reduce la altura en teléfonos para que se vea proporcionado */
+                height: 210px;
             }
             .modal-box {
                 padding: 25px 15px;
@@ -495,6 +524,14 @@
             .modal-desc {
                 font-size: 0.95rem;
             }
+            .progress-steps-container::before {
+                left: 26px;
+            }
+            .step-badge {
+                width: 30px;
+                height: 30px;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -502,350 +539,139 @@
 
     <!-- 1. INTRODUCCIÓN / HEADER -->
     <header>
-        <div class="logo">EP EVOLVE PERFORMANCE</div>
-        <div class="tagline">Descubre de lo que eres capaz / Vive mejor</div>
+        <h1 class="logo">EP EVOLVE PERFORMANCE</h1>
+        <p class="tagline">Lleva tu rendimiento al siguiente nivel</p>
     </header>
 
     <div class="container">
-
-        <!-- Indicador de Interactividad -->
-        <p style="text-align: center; color: var(--neon-blue); font-size: 1rem; margin-bottom: 30px; letter-spacing: 1px; font-weight: 800; padding: 0 10px;">
-            <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS O FOTOS PARA NAVEGAR Y EXPLORAR
-        </p>
-
-        <!-- GALERÍA DE IMÁGENES INTERACTIVAS -->
-        <section id="galeria">
-            <h2><i class="fas fa-images"></i> Galería interactiva del centro</h2>
+        
+        <!-- 2. GALERÍA DE IMÁGENES -->
+        <section>
+            <h2><i class="fa-solid fa-dumbbell"></i> Galería de Entrenamiento</h2>
             <div class="image-gallery">
-                <div class="visual-card" onclick="scrollToSection('desarrollo')">
-                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" alt="Zona de Fuerza">
-                    <div class="overlay-label"><i class="fas fa-dumbbell"></i> Programa de <span>Fuerza</span></div>
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600" alt="Fuerza">
+                    <div class="overlay-label"><span>01</span> Fuerza Extrema</div>
                 </div>
-                <div class="visual-card" onclick="scrollToSection('metodologia')">
-                    <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600&auto=format&fit=crop" alt="Acondicionamiento">
-                    <div class="overlay-label"><i class="fas fa-tasks"></i> Ver <span>Metodología</span></div>
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600" alt="Rendimiento">
+                    <div class="overlay-label"><span>02</span> Alto Rendimiento</div>
                 </div>
-                <div class="visual-card" onclick="scrollToSection('servicios')">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" alt="Asesoría">
-                    <div class="overlay-label"><i class="fas fa-award"></i> Nuestros <span>Servicios</span></div>
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600" alt="Cardio">
+                    <div class="overlay-label"><span>03</span> Resistencia Cardiovascular</div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. ¿QUÉ DESARROLLAMOS? -->
-        <section id="desarrollo">
-            <h2><i class="fas fa-bolt"></i> ¿Qué desarrollamos?</h2>
+        <!-- 3. DISCIPLINAS INTERACTIVAS -->
+        <section>
+            <h2><i class="fa-solid fa-person-running"></i> Disciplinas</h2>
             <div class="grid-cards">
-
-                <div class="interactive-card card-fuerza" onclick="openModal('fuerza')">
+                <div class="interactive-card card-fuerza" onclick="openModal('Fuerza Mental', 'El desarrollo de la resiliencia y la concentración extrema bajo fatiga física.', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600')">
                     <div class="card-header-click">
-                        <span><i class="fas fa-dumbbell main-icon"></i>Fuerza</span>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
+                        <span><i class="fa-solid fa-brain main-icon"></i> Fuerza</span>
                     </div>
-                    <span class="card-tap-hint">Tocar para ampliar</span>
+                    <div class="card-tap-hint">Toca para info</div>
                 </div>
-
-                <div class="interactive-card card-potencia" onclick="openModal('potencia')">
+                <div class="interactive-card card-potencia" onclick="openModal('Potencia Explosiva', 'Desbloquea el máximo potencial de tus fibras musculares con velocidad y carga.', 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600')">
                     <div class="card-header-click">
-                        <span><i class="fas fa-running main-icon"></i>Potencia</span>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
+                        <span><i class="fa-solid fa-bolt main-icon"></i> Potencia</span>
                     </div>
-                    <span class="card-tap-hint">Tocar para ampliar</span>
+                    <div class="card-tap-hint">Toca para info</div>
                 </div>
-
-                <div class="interactive-card card-coordinacion" onclick="openModal('coordinacion')">
+                <div class="interactive-card card-coordinacion" onclick="openModal('Agilidad y Coordinación', 'Mejora tus reflejos mecánicos y la propiocepción de tu cuerpo.', 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600')">
                     <div class="card-header-click">
-                        <span><i class="fas fa-sync-alt main-icon"></i>Coordinación</span>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
+                        <span><i class="fa-solid fa-arrows-spin main-icon"></i> Coordinación</span>
                     </div>
-                    <span class="card-tap-hint">Tocar para ampliar</span>
+                    <div class="card-tap-hint">Toca para info</div>
                 </div>
-
-                <div class="interactive-card card-resistencia" onclick="openModal('resistencia')">
-                    <div class="card-header-click">
-                        <span><i class="fas fa-heartbeat main-icon"></i>Resistencia</span>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
-                    </div>
-                    <span class="card-tap-hint">Tocar para ampliar</span>
-                </div>
-
             </div>
         </section>
 
-        <!-- 3. METODOLOGÍA -->
-        <section id="metodologia">
-            <h2><i class="fas fa-tasks"></i> Metodología de 5 Pasos</h2>
-            <div class="step-list">
-
-                <div class="step-item" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <div class="step-title-wrapper">
-                            <div class="step-number">1</div>
-                            <strong>Evaluación Inicial</strong>
-                        </div>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Análisis detallado de tu composición corporal, historial deportivo, posibles limitaciones físicas y objetivos a corto, mediano y largo plazo.
+        <!-- 4. METODOLOGÍA PROGRESIVA -->
+        <section>
+            <h2><i class="fa-solid fa-chart-line"></i> Metodología Progresiva</h2>
+            <div class="progress-steps-container">
+                <div class="progress-step-card active" onclick="toggleStep(this)">
+                    <div class="step-badge">1</div>
+                    <div class="step-body">
+                        <h3>Evaluación <i class="fa-solid fa-chevron-down step-arrow"></i></h3>
+                        <p class="step-info-text">Medición inicial de tus capacidades de resistencia, fuerza y movilidad para crear una línea de base adaptada.</p>
                     </div>
                 </div>
-
-                <div class="step-item" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <div class="step-title-wrapper">
-                            <div class="step-number">2</div>
-                            <strong>Planificación</strong>
-                        </div>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Diseño de un macrociclo y microciclos de entrenamiento personalizados con base en ciencia para maximizar cada sesión de entrenamiento.
+                <div class="progress-step-card" onclick="toggleStep(this)">
+                    <div class="step-badge">2</div>
+                    <div class="step-body">
+                        <h3>Periodización <i class="fa-solid fa-chevron-down step-arrow"></i></h3>
+                        <p class="step-info-text">Planificación científica dividida en microciclos específicos con el objetivo de evitar el estancamiento.</p>
                     </div>
                 </div>
-
-                <div class="step-item" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <div class="step-title-wrapper">
-                            <div class="step-number">3</div>
-                            <strong>Seguimiento Activo</strong>
-                        </div>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Acompañamiento y corrección continua en la técnica de tus ejercicios para prevenir cualquier tipo de sobrecarga o lesión deportiva.
-                    </div>
-                </div>
-
-                <div class="step-item" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <div class="step-title-wrapper">
-                            <div class="step-number">4</div>
-                            <strong>Reevaluación</strong>
-                        </div>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Monitoreamos métricas físicas de forma periódica para ajustar las cargas, volúmenes y nutrientes de acuerdo con tu rendimiento real.
-                    </div>
-                </div>
-
-                <div class="step-item" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <div class="step-title-wrapper">
-                            <div class="step-number">5</div>
-                            <strong>Resultados Reales</strong>
-                        </div>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Alcanzamos los hitos planteados con bases sólidas que garantizan la longevidad del rendimiento y hábitos de vida saludables.
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 4. BENEFICIOS -->
-        <section id="beneficios">
-            <h2><i class="fas fa-medal"></i> Beneficios del Programa</h2>
-            <div class="grid-cards">
-                <div class="step-item benefit-card" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Fuerza e Hipertrofia</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Incremento sustancial de la fuerza general y masa muscular estructurada mediante programas científicamente validados.
-                    </div>
-                </div>
-                <div class="step-item benefit-card" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Energía Diaria Elevada</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Optimización de los sistemas metabólicos para que experimentes niveles óptimos y estables de energía durante todo el día.
-                    </div>
-                </div>
-                <div class="step-item benefit-card" onclick="toggleStep(this)">
-                    <div class="step-header">
-                        <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Autonomía y Salud</span>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
-                    </div>
-                    <div class="step-content">
-                        Mayor movilidad articular, prevención activa de lesiones cotidianas y fortalecimiento de tendones y ligamentos.
+                <div class="progress-step-card" onclick="toggleStep(this)">
+                    <div class="step-badge">3</div>
+                    <div class="step-body">
+                        <h3>Sobrecarga Progresiva <i class="fa-solid fa-chevron-down step-arrow"></i></h3>
+                        <p class="step-info-text">Incremento gradual de la intensidad y del volumen para garantizar adaptaciones musculares y cardiovasculares continuas.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. SERVICIOS -->
-        <section id="servicios">
-            <h2><i class="fas fa-award"></i> Nuestros Servicios</h2>
-            <div class="grid-cards">
-                <div class="interactive-card service-card-bg" onclick="openModal('personalizado')">
-                    <div class="card-header-click">
-                        <strong>Personalizado</strong>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
-                    </div>
-                    <span class="card-tap-hint">Ver más detalles</span>
-                </div>
-                <div class="interactive-card service-card-bg" onclick="openModal('rendimiento')">
-                    <div class="card-header-click">
-                        <strong>Rendimiento</strong>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
-                    </div>
-                    <span class="card-tap-hint">Ver más detalles</span>
-                </div>
-                <div class="interactive-card service-card-bg" onclick="openModal('fuerzaServicio')">
-                    <div class="card-header-click">
-                        <strong>Fuerza</strong>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
-                    </div>
-                    <span class="card-tap-hint">Ver más detalles</span>
-                </div>
-                <div class="interactive-card service-card-bg" onclick="openModal('online')">
-                    <div class="card-header-click">
-                        <strong>Online</strong>
-                        <i class="fas fa-expand-alt" style="font-size:1.1rem; color:var(--neon-blue);"></i>
-                    </div>
-                    <span class="card-tap-hint">Ver más detalles</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. CONTACTO -->
-        <section id="contacto" style="text-align: center; border-color: #25d366;">
-            <h2><i class="fas fa-comments"></i> Contacto Directo</h2>
-            <p style="margin-bottom: 25px; color: var(--text-desc); font-size: 1.15rem;">¿Listo para dar el primer paso hacia tu transformación física? Chatea directamente con nosotros.</p>
-            <a href="https://wa.me/573012430458?text=Hola%20EP%20Evolve%20Performance!%20Me%20interesa%20empezar%20mi%20preparacion%20fisica" target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i> Escríbenos por WhatsApp
+        <!-- 5. CONTACTO WHATSAPP -->
+        <div class="whatsapp-container">
+            <a href="https://wa.me/50499999999?text=Hola%20quiero%20unirme%20a%20EP%20Evolve%20Performance" class="whatsapp-btn" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Contáctanos por WhatsApp
             </a>
-        </section>
+        </div>
 
     </div>
 
-    <!-- MODALES / PESTAÑAS MOMENTÁNEAS DETALLADAS -->
-    <div class="modal-overlay" id="customModal" onclick="closeModal(event)">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-close-btn" onclick="forceCloseModal()"><i class="fas fa-times"></i></button>
-            <div class="modal-bg-image" id="modalBg"></div>
+    <!-- MODAL EMERGENTE -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeModal(null)">&times;</button>
+            <div class="modal-bg-image" id="modalBgImage"></div>
             <div class="modal-content">
-                <div class="modal-title" id="modalTitle">Título</div>
-                <div class="modal-desc" id="modalDesc">Descripción llamativa...</div>
+                <h3 class="modal-title" id="modalTitle">Detalle</h3>
+                <p class="modal-desc" id="modalDesc">Cargando información...</p>
                 <div class="modal-accent-box">
-                    <h4 id="modalAccentTitle">Beneficio Clave</h4>
-                    <p id="modalAccentContent">Información extra...</p>
+                    <h4><i class="fa-solid fa-circle-check"></i> Beneficio Clave</h4>
+                    <p>Optimización del rendimiento y reducción activa del riesgo de lesiones mediante base científica.</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2025 EP EVOLVE PERFORMANCE. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- LÓGICA DE INTERACTIVIDAD -->
+    <!-- INTERACTVIDAD JAVASCRIPT -->
     <script>
-        // Scroll suave al hacer clic en fotos de la galería
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+        function openModal(title, text, bgUrl) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = text;
+            document.getElementById('modalBgImage').style.backgroundImage = 'linear-gradient(to top, rgba(15,19,25,0.98) 0%, rgba(15,19,25,0.7) 100%), url(' + bgUrl + ')';
+            document.getElementById('modalOverlay').classList.add('active');
         }
 
-        // Acordeones sencillos para pasos
-        function toggleStep(item) {
-            item.classList.toggle('active');
-        }
-
-        // Base de Datos de Información para los Modales con imágenes relacionadas
-        const modalData = {
-            fuerza: {
-                title: '<i class="fas fa-dumbbell"></i> Fuerza',
-                desc: 'La fuerza es la base de todo rendimiento físico humano. Implementamos programas estructurados de sobrecarga progresiva adaptados individualmente, enfocados en levantamientos multiarticulares que incrementan tu fuerza máxima y estimulan la hipertrofia muscular segura.',
-                accentTitle: 'Enfoque de Éxito',
-                accentContent: 'Previene la sarcopenia, acelera tu metabolismo basal y mejora tu densidad ósea desde la primera semana.',
-                bgUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600'
-            },
-            potencia: {
-                title: '<i class="fas fa-running"></i> Potencia',
-                desc: 'La potencia te permite aplicar la máxima cantidad de fuerza en el menor tiempo posible. Mediante pliometría y levantamientos dinámicos rápidos, optimizamos la velocidad de reclutamiento muscular para transformar tu cuerpo en una máquina explosiva y ágil.',
-                accentTitle: 'Beneficio Atlético',
-                accentContent: 'Mejora drásticamente tu reactividad, capacidad de salto y sprint, indispensables para cualquier disciplina deportiva.',
-                bgUrl: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600'
-            },
-            coordinacion: {
-                title: '<i class="fas fa-sync-alt"></i> Coordinación',
-                desc: 'Un cuerpo fuerte debe moverse con gracia y eficiencia. Nos enfocamos en el control motor fino, estabilidad lumbo-pélvica (Core) y equilibrio dinámico para que realices patrones de movimiento complejos con total naturalidad, reduciendo drásticamente el riesgo de lesiones.',
-                accentTitle: 'Sinergia Corporal',
-                accentContent: 'Perfecciona tu equilibrio postural y adquiere patrones de movimiento fluidos y elegantes transferibles al día a día.',
-                bgUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600'
-            },
-            resistencia: {
-                title: '<i class="fas fa-heartbeat"></i> Resistencia',
-                desc: 'Aumentamos tu umbral anaeróbico y tu eficiencia cardiovascular. Utilizando entrenamientos por intervalos de alta intensidad and acondicionamiento metabólico continuo, tu corazón y pulmones aprenderán a soportar esfuerzos extenuantes y a recuperarse en tiempo récord.',
-                accentTitle: 'Capacidad Pulmonar',
-                accentContent: 'Duplica tu energía diaria, optimiza la oxigenación celular y quema calorías de forma prolongada incluso post-entrenamiento.',
-                bgUrl: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600'
-            },
-            personalizado: {
-                title: '<i class="fas fa-user-check"></i> Personalizado',
-                desc: 'Un entrenador dedicado en exclusiva a supervisar tu biomecánica. Cada sesión se planifica al milímetro según tus necesidades del día, adaptando cargas y corrigiendo posturas en tiempo real para un progreso sin precedentes.',
-                accentTitle: 'Foco Absoluto',
-                accentContent: 'Ideal para quienes buscan progresar de manera segura, superar estancamientos o recuperarse activamente de lesiones.',
-                bgUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600'
-            },
-            rendimiento: {
-                title: '<i class="fas fa-trophy"></i> Alto Rendimiento',
-                desc: 'Destinado a atletas competitivos que buscan ese milisegundo o gramo de fuerza extra. Evaluamos tus debilidades atléticas y diseñamos bloques de periodización científica para llevarte a tu pico físico justo a tiempo para competir.',
-                accentTitle: 'Resultados de Élite',
-                accentContent: 'Preparación de alto nivel que incluye optimización de la fatiga sistémica y transferencia deportiva directa.',
-                bgUrl: 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600'
-            },
-            fuerzaServicio: {
-                title: '<i class="fas fa-dumbbell"></i> Club de Fuerza',
-                desc: 'Nuestra metodología grupal enfocada en el dominio de barras, mancuernas y peso corporal. Aprende y progresa junto a un grupo apasionado bajo una planificación estructurada que no deja nada al azar.',
-                accentTitle: 'Comunidad Fuerte',
-                accentContent: 'Un ambiente competitivo y cooperativo que te retará a dar el máximo esfuerzo en cada serie programada.',
-                bgUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600'
-            },
-            online: {
-                title: '<i class="fas fa-laptop-house"></i> Asesoría Online',
-                desc: 'Tu plan de entrenamiento y pautas nutricionales directamente en tu celular, vivas donde vivas. Incluye revisiones semanales en video y soporte constante para ajustar el rumbo hacia tu meta.',
-                accentTitle: 'Libertad de Horarios',
-                accentContent: 'Lleva la calidad de EP EVOLVE PERFORMANCE contigo y entrena a tu propio ritmo con control profesional constante.',
-                bgUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600'
-            }
-        };
-
-        // Abrir Modal de forma Dinámica
-        function openModal(key) {
-            const data = modalData[key];
-            if (data) {
-                document.getElementById('modalTitle').innerHTML = data.title;
-                document.getElementById('modalDesc').innerHTML = data.desc;
-                document.getElementById('modalAccentTitle').innerText = data.accentTitle;
-                document.getElementById('modalAccentContent').innerText = data.accentContent;
-                document.getElementById('modalBg').style.backgroundImage = `url('${data.bgUrl}')`;
-
-                document.getElementById('customModal').classList.add('active');
-            }
-        }
-
-        // Cerrar Modal al tocar fuera
         function closeModal(event) {
-            if (event.target.id === 'customModal') {
-                forceCloseModal();
+            if (event === null || event.target === document.getElementById('modalOverlay') || event.target.classList.contains('modal-close-btn')) {
+                document.getElementById('modalOverlay').classList.remove('active');
             }
         }
 
-        // Cerrar Modal desde el botón
-        function forceCloseModal() {
-            document.getElementById('customModal').classList.remove('active');
+        function toggleStep(element) {
+            const container = element.parentElement;
+            const steps = container.querySelectorAll('.progress-step-card');
+            steps.forEach(step => {
+                if(step !== element) {
+                    step.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
         }
     </script>
-
 </body>
 </html>
