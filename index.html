@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EP EVOLVE PERFORMANCE</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* VARIABLES DE DISEÑO (FÁCILES DE EDITAR) */
+        :root {
+            --bg-dark: #090b0e;
+            --bg-card: #12161c;
+            --neon-blue: #00f3ff;
+            --neon-blue-glow: rgba(0, 243, 255, 0.4);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER Y HÉROE */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: radial-gradient(circle at top, var(--neon-blue-glow) 0%, transparent 60%);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-blue);
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENEDOR GENERAL */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* SECCIONES / TARJETAS */
+        section {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        section:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--neon-blue-glow);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* LISTAS Y ELEMENTOS DE GRILLA */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border-left: 3px solid var(--neon-blue);
+        }
+
+        .feature-card i {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 8px;
+        }
+
+        /* PASOS DE METODOLOGÍA */
+        .step-list {
+            list-style: none;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .step-number {
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            font-weight: bold;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* BOTÓN DE WHATSAPP */
+        .whatsapp-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #25d366;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 15px;
+            border-radius: 50px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. INTRODUCCIÓN / HEADER -->
+    <header>
+        <div class="logo">EP EVOLVE PERFORMANCE</div>
+        <div class="tagline">Descubre de lo que eres capaz / Vive mejor</div>
+    </header>
+
+    <div class="container">
+
+        <!-- 2. ¿QUÉ DESARROLLAMOS? -->
+        <section id="desarrollo">
+            <h2><i class="fas fa-bolt"></i> ¿Qué desarrollamos?</h2>
+            <div class="grid-2">
+                <div class="feature-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <div>Fuerza</div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-running"></i>
+                    <div>Potencia</div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <div>Coordinación</div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <div>Resistencia</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. METODOLOGÍA -->
+        <section id="metodologia">
+            <h2><i class="fas fa-tasks"></i> Metodología de 5 Pasos</h2>
+            <ul class="step-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <div><strong>Evaluación:</strong> Diagnóstico inicial completo de tus capacidades.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <div><strong>Planificación:</strong> Rutinas personalizadas con bases científicas.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <div><strong>Seguimiento:</strong> Monitoreo diario y acompañamiento en tus técnicas.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">4</div>
+                    <div><strong>Reevaluación:</strong> Medición de avances periódicamente.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">5</div>
+                    <div><strong>Resultados:</strong> Consecución efectiva de tus objetivos físicos.</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 4. BENEFICIOS -->
+        <section id="beneficios">
+            <h2><i class="fas fa-medal"></i> Beneficios del Programa</h2>
+            <ul style="list-style: none; padding-left: 5px;">
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Incremento sustancial de la fuerza general.</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Aumento de masa muscular de forma estructurada.</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Niveles máximos de energía para tu día a día.</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Mayor autonomía funcional y prevención de lesiones.</li>
+            </ul>
+        </section>
+
+        <!-- 5. SERVICIOS -->
+        <section id="servicios">
+            <h2><i class="fas fa-award"></i> Nuestros Servicios</h2>
+            <div class="grid-2">
+                <div class="feature-card" style="border-left-color: #f59e0b;">
+                    <strong>Personalizado</strong><br><small>Entrenamiento Individual</small>
+                </div>
+                <div class="feature-card" style="border-left-color: #f59e0b;">
+                    <strong>Rendimiento</strong><br><small>Mejora Deportiva</small>
+                </div>
+                <div class="feature-card" style="border-left-color: #f59e0b;">
+                    <strong>Fuerza</strong><br><small>Acondicionamiento</small>
+                </div>
+                <div class="feature-card" style="border-left-color: #f59e0b;">
+                    <strong>Online</strong><br><small>Asesoría a Distancia</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONTACTO (BOTÓN WHATSAPP) -->
+        <section id="contacto" style="text-align: center; border-color: #25d366;">
+            <h2><i class="fas fa-comments"></i> Contacto Directo</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">¿Listo para dar el primer paso? Habla directamente con nosotros.</p>
+            <a href="https://wa.me/573012430458?text=Hola%20EP%20Evolve%20Performance!%20Me%20interesa%20empezar%20mi%20preparacion%20fisica" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Escríbenos por WhatsApp
+            </a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EP EVOLVE PERFORMANCE. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
