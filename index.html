@@ -457,6 +457,66 @@
             color: #9ca3af;
         }
 
+        /* BENEFICIOS Y ADICIONALES (RESTABLECIDOS) */
+        .benefit-card {
+            border-left: 4px solid var(--neon-blue) !important;
+            background: rgba(0, 243, 255, 0.01) !important;
+        }
+
+        .step-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            width: 100%;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .step-item:hover {
+            border-color: var(--neon-blue-glow);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .step-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out, margin-top 0.35s ease;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        .step-item.active .step-content {
+            max-height: 200px;
+            margin-top: 12px;
+        }
+
+        .step-item.active .arrow-icon {
+            transform: rotate(180deg);
+            color: var(--neon-blue);
+        }
+
+        /* SERVICIOS */
+        .service-card-bg {
+            background-image: linear-gradient(to top, rgba(15,19,25,0.98) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400');
+            background-size: cover;
+        }
+
         /* BOTÓN DE WHATSAPP */
         .whatsapp-container {
             text-align: center;
@@ -589,7 +649,7 @@
             </div>
         </section>
 
-        <!-- 4. METODOLOGÍA PROGRESIVA -->
+        <!-- 4. METODOLOGÍA PROGRESIVA (INTEGRADA EXCLUSIVAMENTE EN DISEÑO DE PASOS DE PROGRESO) -->
         <section>
             <h2><i class="fa-solid fa-chart-line"></i> Metodología Progresiva</h2>
             <div class="progress-steps-container">
@@ -611,13 +671,61 @@
                     <div class="step-badge">3</div>
                     <div class="step-body">
                         <h3>Sobrecarga Progresiva <i class="fa-solid fa-chevron-down step-arrow"></i></h3>
-                        <p class="step-info-text">Incremento gradual de la intensidad y del volumen para garantizar adaptaciones musculares y cardiovasculares continuas.</p>
+                        <p class="step-info-text">Incremento gradual de la intensidad y del volumen para garantizar adaptaciones musculares y cardiovasculares continuas.</p>                    </div>
+                </div>
+                <div class="progress-step-card" onclick="toggleStep(this)">
+                    <div class="step-badge">4</div>
+                    <div class="step-body">
+                        <h3>Feedback Activo <i class="fa-solid fa-chevron-down step-arrow"></i></h3>
+                        <p class="step-info-text">Revisión constante de técnica, cargas y sensaciones para realizar ajustes dinámicos de manera semanal.</p>
+                    </div>
+                </div>
+                <div class="progress-step-card" onclick="toggleStep(this)">
+                    <div class="step-badge">5</div>
+                    <div class="step-body">
+                        <h3>Resultados Sostenibles <i class="fa-solid fa-chevron-down step-arrow"></i></h3>
+                        <p class="step-info-text">Logro de metas a mediano y largo plazo priorizando la salud articular y la longevidad deportiva.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. CONTACTO WHATSAPP -->
+        <!-- 5. SECCIÓN DE ADICIONALES / BENEFICIOS (NUNCA ELIMINADA) -->
+        <section class="benefit-card">
+            <h2><i class="fa-solid fa-gift"></i> ¿Qué incluye el programa?</h2>
+            <div class="step-list">
+                <div class="step-item" onclick="toggleItem(this)">
+                    <div class="step-header">
+                        <strong><i class="fa-solid fa-calendar-check" style="color: var(--neon-blue);"></i> Planificación de Entrenamientos</strong>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">Rutinas estructuradas y personalizadas según tus objetivos individuales de fuerza o acondicionamiento cardiovascular.</div>
+                </div>
+                <div class="step-item" onclick="toggleItem(this)">
+                    <div class="step-header">
+                        <strong><i class="fa-solid fa-apple-whole" style="color: var(--neon-blue);"></i> Guía de Alimentación Integral</strong>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">Pautas nutricionales flexibles y de base científica para potenciar tu recuperación y niveles de energía diario.</div>
+                </div>
+                <div class="step-item" onclick="toggleItem(this)">
+                    <div class="step-header">
+                        <strong><i class="fa-solid fa-chart-simple" style="color: var(--neon-blue);"></i> Monitoreo Semanal de Métricas</strong>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">Revisión de progresos, ajustes de cargas y volumen para asegurar un desarrollo continuo y sin estancamientos.</div>
+                </div>
+                <div class="step-item" onclick="toggleItem(this)">
+                    <div class="step-header">
+                        <strong><i class="fa-solid fa-comments" style="color: var(--neon-blue);"></i> Soporte Continuo Directo</strong>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">Contacto directo vía WhatsApp para resolución de dudas técnicas, soporte motivacional y ajustes de última hora.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONTACTO WHATSAPP -->
         <div class="whatsapp-container">
             <a href="https://wa.me/50499999999?text=Hola%20quiero%20unirme%20a%20EP%20Evolve%20Performance" class="whatsapp-btn" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> Contáctanos por WhatsApp
@@ -670,6 +778,10 @@
                     step.classList.remove('active');
                 }
             });
+            element.classList.toggle('active');
+        }
+
+        function toggleItem(element) {
             element.classList.toggle('active');
         }
     </script>
