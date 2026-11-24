@@ -98,7 +98,6 @@
             letter-spacing: 1px;
         }
 
-        /* HERO ADICIONAL DE INTRODUCCIÓN */
         .intro-banner {
             background: linear-gradient(135deg, rgba(0, 243, 255, 0.05) 0%, rgba(15, 19, 25, 0.9) 100%);
             border: 1.5px dashed var(--neon-blue);
@@ -123,7 +122,7 @@
             margin: 0 auto;
         }
 
-        /* GALERÍA */
+        /* GALERÍA INTERACTIVA */
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -138,7 +137,7 @@
             border: 1px solid rgba(0, 243, 255, 0.15);
             box-shadow: 0 10px 25px rgba(0,0,0,0.6);
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .visual-card img {
@@ -148,15 +147,22 @@
             transition: transform 0.6s ease;
         }
 
+        .visual-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue-glow);
+            transform: translateY(-5px);
+        }
+
         .visual-card:hover img {
-            transform: scale(1.08);
+            transform: scale(1.1);
+            filter: brightness(0.7);
         }
 
         .visual-card .overlay-label {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to top, rgba(7,9,14,0.95) 10%, rgba(7,9,14,0.4) 60%, transparent 100%);
-            padding: 15px;
+            background: linear-gradient(to top, rgba(7,9,14,0.95) 15%, rgba(7,9,14,0.4) 70%, transparent 100%);
+            padding: 20px 15px;
             font-weight: bold;
             font-size: 1rem;
             letter-spacing: 1px;
@@ -164,10 +170,17 @@
             color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            transition: background 0.3s;
         }
 
-        /* GRID DE DISCIPLINAS */
+        .visual-card .overlay-label i {
+            color: var(--neon-blue);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        /* PILARES DEL PROGRAMA */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -329,54 +342,111 @@
             color: var(--neon-blue);
         }
 
-        /* BENEFICIOS Y ADICIONALES */
-        .benefit-card {
-            border-left: 4px solid var(--neon-blue) !important;
-            background: rgba(0, 243, 255, 0.01) !important;
-        }
-
-        .step-list {
+        /* TARJETAS INTERACTIVAS ANIMADAS: ¿QUÉ INCLUYE TU PROGRAMA? */
+        .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
+            gap: 20px;
+            margin-top: 15px;
         }
 
-        .step-item {
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 15px;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+        .benefit-card-interactive {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 22px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .benefit-card-interactive::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        .benefit-card-interactive:hover {
+            transform: translateY(-6px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 8px 30px rgba(0, 243, 255, 0.15);
+        }
+
+        .benefit-card-interactive:hover::before {
+            width: 8px;
+        }
+
+        .benefit-card-interactive.active {
+            border-color: var(--neon-blue);
+            background: linear-gradient(135deg, rgba(15, 19, 25, 0.95) 0%, rgba(0, 243, 255, 0.04) 100%);
+            box-shadow: 0 0 25px var(--neon-blue-glow);
+        }
+
+        .benefit-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(0, 243, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+            font-size: 1.5rem;
             transition: all 0.3s ease;
         }
 
-        .step-item:hover {
-            border-color: var(--neon-blue-glow);
-            background: rgba(255, 255, 255, 0.03);
+        .benefit-card-interactive:hover .benefit-icon-wrapper,
+        .benefit-card-interactive.active .benefit-icon-wrapper {
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: scale(1.1);
         }
 
-        .step-header {
+        .benefit-card-interactive h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .step-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: #9ca3af;
-            font-size: 0.9rem;
+        .benefit-card-interactive.active h3 {
+            color: var(--neon-blue);
         }
 
-        .step-item.active .step-content {
-            max-height: 150px;
-            margin-top: 10px;
+        .benefit-arrow {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        .step-item.active .arrow-icon {
+        .benefit-card-interactive.active .benefit-arrow {
             transform: rotate(180deg);
             color: var(--neon-blue);
+        }
+
+        .benefit-description-expanded {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+        }
+
+        .benefit-card-interactive.active .benefit-description-expanded {
+            max-height: 160px;
+            opacity: 1;
+            margin-top: 12px;
         }
 
         /* MODAL */
@@ -508,22 +578,22 @@
             <h3>¿Qué es Evolve Performance?</h3>
             <p>Es un sistema de preparación física premium, estructurado científicamente para ayudarte a conocer tu estado físico, superar tus límites y desarrollar un cuerpo fuerte, ágil, veloz y altamente resistente.</p>
         </div>
-        
+
         <!-- GALERÍA DE ENTRENAMIENTO -->
         <section>
             <h2><i class="fa-solid fa-dumbbell"></i> Galería de Entrenamiento</h2>
             <div class="image-gallery">
-                <div class="visual-card">
+                <div class="visual-card" onclick="openModal('Fuerza Extrema', 'Desarrollo muscular integral, bases técnicas de levantamiento pesado e hipertrofia funcional bajo un sistema de progresión de cargas seguro.', 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600')">
                     <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600" alt="Fuerza">
-                    <div class="overlay-label"><span>01</span> Fuerza Extrema</div>
+                    <div class="overlay-label"><span>01</span> Fuerza Extrema <i class="fa-solid fa-expand" style="color: var(--neon-blue);"></i></div>
                 </div>
-                <div class="visual-card">
+                <div class="visual-card" onclick="openModal('Alto Rendimiento', 'Entrenamiento pliométrico, potencia neuromuscular y optimización del control motor en situaciones de alta intensidad.', 'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600')">
                     <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600" alt="Rendimiento">
-                    <div class="overlay-label"><span>02</span> Alto Rendimiento</div>
+                    <div class="overlay-label"><span>02</span> Alto Rendimiento <i class="fa-solid fa-expand" style="color: var(--neon-blue);"></i></div>
                 </div>
-                <div class="visual-card">
+                <div class="visual-card" onclick="openModal('Resistencia Cardiovascular', 'Mejora drástica del VO2 Máx, optimización mitocondrial y capacidad de recuperación rápida mediante intervalos de alto octanaje.', 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600')">
                     <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600" alt="Cardio">
-                    <div class="overlay-label"><span>03</span> Resistencia Cardiovascular</div>
+                    <div class="overlay-label"><span>03</span> Resistencia Cardiovascular <i class="fa-solid fa-expand" style="color: var(--neon-blue);"></i></div>
                 </div>
             </div>
         </section>
@@ -559,7 +629,7 @@
             </div>
         </section>
 
-        <!-- METODOLOGÍA PROGRESIVA COMPLETA (5 PASOS) -->
+        <!-- METODOLOGÍA PROGRESIVA COMPLETA -->
         <section>
             <h2><i class="fa-solid fa-chart-line"></i> Metodología Progresiva</h2>
             <div class="progress-steps-container">
@@ -601,37 +671,45 @@
             </div>
         </section>
 
-        <!-- SERVICIOS INCLUIDOS -->
-        <section class="benefit-card">
-            <h2><i class="fa-solid fa-gift"></i> ¿Qué incluye tu programa?</h2>
-            <div class="step-list">
-                <div class="step-item" onclick="toggleItem(this)">
-                    <div class="step-header">
-                        <strong><i class="fa-solid fa-calendar-check" style="color: var(--neon-blue);"></i> Planificación de Entrenamientos</strong>
-                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        <!-- SERVICIOS INCLUIDOS (Rediseñado con tarjetas interactivas neón) -->
+        <section>
+            <h2><i class="fa-solid fa-circle-check"></i> ¿Qué incluye tu programa?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fa-solid fa-calendar-check"></i>
                     </div>
-                    <div class="step-content">Rutinas 100% personalizadas según tus metas y disponibilidad, enfocadas en técnica biomecánica correcta y progreso real.</div>
+                    <h3>Planificación Premium <i class="fa-solid fa-chevron-down benefit-arrow"></i></h3>
+                    <div class="benefit-description-expanded">
+                        Rutinas 100% personalizadas según tus metas y disponibilidad, optimizando cada variable para garantizar que alcances tu máximo rendimiento sin lesiones.
+                    </div>
                 </div>
-                <div class="step-item" onclick="toggleItem(this)">
-                    <div class="step-header">
-                        <strong><i class="fa-solid fa-apple-whole" style="color: var(--neon-blue);"></i> Guía de Alimentación Integral</strong>
-                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fa-solid fa-apple-whole"></i>
                     </div>
-                    <div class="step-content">Estrategias nutricionales flexibles basadas en evidencia científica para impulsar tus entrenamientos y acelerar la recuperación muscular.</div>
+                    <h3>Nutrición Deportiva <i class="fa-solid fa-chevron-down benefit-arrow"></i></h3>
+                    <div class="benefit-description-expanded">
+                        Estrategias de alimentación adaptadas que potencian tus entrenamientos, aceleran tu recuperación muscular y transforman tu composición corporal de forma real.
+                    </div>
                 </div>
-                <div class="step-item" onclick="toggleItem(this)">
-                    <div class="step-header">
-                        <strong><i class="fa-solid fa-chart-simple" style="color: var(--neon-blue);"></i> Monitoreo Semanal de Métricas</strong>
-                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fa-solid fa-chart-simple"></i>
                     </div>
-                    <div class="step-content">Registro activo de marcas personales de fuerza, porcentaje de grasa, peso corporal y fatiga del sistema nervioso central.</div>
+                    <h3>Control de Métricas <i class="fa-solid fa-chevron-down benefit-arrow"></i></h3>
+                    <div class="benefit-description-expanded">
+                        Seguimiento riguroso de tus marcas personales de fuerza, porcentaje de grasa, peso corporal e índices de fatiga del sistema nervioso para ajustes perfectos.
+                    </div>
                 </div>
-                <div class="step-item" onclick="toggleItem(this)">
-                    <div class="step-header">
-                        <strong><i class="fa-solid fa-comments" style="color: var(--neon-blue);"></i> Soporte Continuo Directo</strong>
-                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                    <div class="benefit-icon-wrapper">
+                        <i class="fa-solid fa-comments"></i>
                     </div>
-                    <div class="step-content">Canal directo de contacto para resolver dudas técnicas de ejecución de ejercicios, dudas nutricionales y motivación diaria.</div>
+                    <h3>Soporte Continuo <i class="fa-solid fa-chevron-down benefit-arrow"></i></h3>
+                    <div class="benefit-description-expanded">
+                        Acceso directo vía WhatsApp para resolver dudas técnicas sobre ejecución de ejercicios, realizar correcciones por video y asegurar tu progreso diario.
+                    </div>
                 </div>
             </div>
         </section>
@@ -645,7 +723,7 @@
 
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL GLOBAL -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
         <div class="modal-box">
             <button class="modal-close-btn" onclick="closeModal(null)">&times;</button>
@@ -688,7 +766,14 @@
             element.classList.toggle('active');
         }
 
-        function toggleItem(element) {
+        function toggleBenefit(element) {
+            const container = element.parentElement;
+            const cards = container.querySelectorAll('.benefit-card-interactive');
+            cards.forEach(card => {
+                if(card !== element) {
+                    card.classList.remove('active');
+                }
+            });
             element.classList.toggle('active');
         }
     </script>
