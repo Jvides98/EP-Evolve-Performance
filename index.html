@@ -6,7 +6,7 @@
     <title>EP EVOLVE PERFORMANCE</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* VARIABLES DE DISEÑO (FÁCILES DE EDITAR) */
+        /* VARIABLES DE DISEÑO */
         :root {
             --bg-dark: #090b0e;
             --bg-card: #12161c;
@@ -75,7 +75,6 @@
 
         section:hover {
             border-color: var(--neon-blue);
-            transform: translateY(-2px);
         }
 
         h2 {
@@ -90,25 +89,74 @@
             gap: 10px;
         }
 
-        /* LISTAS Y ELEMENTOS DE GRILLA */
+        /* GRILLA RESPONSIVA */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            border-left: 3px solid var(--neon-blue);
+        @media (max-width: 480px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .feature-card i {
-            font-size: 1.5rem;
+        /* TARJETAS INTERACTIVAS DESPLEGABLES */
+        .interactive-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border-left: 3px solid var(--neon-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            padding: 15px;
+            position: relative;
+        }
+
+        .interactive-card:hover {
+            background: rgba(0, 243, 255, 0.05);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+        }
+
+        .card-header-click {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .card-header-click i.main-icon {
+            font-size: 1.3rem;
             color: var(--neon-blue);
-            margin-bottom: 8px;
+            margin-right: 10px;
+        }
+
+        .card-header-click .arrow-icon {
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        /* DETALLE DESPLEGABLE (CERRADO POR DEFECTO) */
+        .card-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin-top 0.3s ease;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .interactive-card.active .card-details {
+            max-height: 200px; /* Ajustar según longitud de contenido */
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 8px;
+        }
+
+        .interactive-card.active .arrow-icon {
+            transform: rotate(180deg);
+            color: var(--neon-blue);
         }
 
         /* PASOS DE METODOLOGÍA */
@@ -118,9 +166,31 @@
 
         .step-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            gap: 15px;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            border-color: var(--neon-blue-glow);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .step-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .step-number {
@@ -137,8 +207,27 @@
             box-shadow: 0 0 10px var(--neon-blue);
         }
 
+        .step-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin-top 0.3s ease;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-left: 40px;
+        }
+
+        .step-item.active .step-content {
+            max-height: 150px;
+            margin-top: 10px;
+        }
+
+        .step-item.active .arrow-icon {
+            transform: rotate(180deg);
+            color: var(--neon-blue);
+        }
+
         /* BOTÓN DE WHATSAPP */
-        .whatsapp-btn {
+        .whatsapp-btn { 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -179,82 +268,205 @@
 
     <div class="container">
 
+        <!-- Indicador de Interactividad -->
+        <p style="text-align: center; color: var(--neon-blue); font-size: 0.85rem; margin-bottom: 20px; letter-spacing: 1px;">
+            <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS PARA DESPLEGAR MÁS DETALLES
+        </p>
+
         <!-- 2. ¿QUÉ DESARROLLAMOS? -->
         <section id="desarrollo">
             <h2><i class="fas fa-bolt"></i> ¿Qué desarrollamos?</h2>
             <div class="grid-2">
-                <div class="feature-card">
-                    <i class="fas fa-dumbbell"></i>
-                    <div>Fuerza</div>
+                
+                <div class="interactive-card" onclick="toggleCard(this)">
+                    <div class="card-header-click">
+                        <span><i class="fas fa-dumbbell main-icon"></i>Fuerza</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Desarrollamos fuerza máxima y resistencia muscular mediante sobrecarga progresiva adaptada a tus objetivos específicos.
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-running"></i>
-                    <div>Potencia</div>
+
+                <div class="interactive-card" onclick="toggleCard(this)">
+                    <div class="card-header-click">
+                        <span><i class="fas fa-running main-icon"></i>Potencia</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Entrenamientos explosivos que mejoran el reclutamiento de fibras rápidas, aumentando tu velocidad y reactividad muscular.
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-sync-alt"></i>
-                    <div>Coordinación</div>
+
+                <div class="interactive-card" onclick="toggleCard(this)">
+                    <div class="card-header-click">
+                        <span><i class="fas fa-sync-alt main-icon"></i>Coordinación</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Optimizamos tus patrones motores y estabilidad articular para que te muevas con mayor soltura, fluidez y seguridad.
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-heartbeat"></i>
-                    <div>Resistencia</div>
+
+                <div class="interactive-card" onclick="toggleCard(this)">
+                    <div class="card-header-click">
+                        <span><i class="fas fa-heartbeat main-icon"></i>Resistencia</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Acondicionamiento cardiovascular avanzado para optimizar tu capacidad pulmonar y mantener un ritmo de alta intensidad por más tiempo.
+                    </div>
                 </div>
+
             </div>
         </section>
 
         <!-- 3. METODOLOGÍA -->
         <section id="metodologia">
             <h2><i class="fas fa-tasks"></i> Metodología de 5 Pasos</h2>
-            <ul class="step-list">
-                <li class="step-item">
-                    <div class="step-number">1</div>
-                    <div><strong>Evaluación:</strong> Diagnóstico inicial completo de tus capacidades.</div>
-                </li>
-                <li class="step-item">
-                    <div class="step-number">2</div>
-                    <div><strong>Planificación:</strong> Rutinas personalizadas con bases científicas.</div>
-                </li>
-                <li class="step-item">
-                    <div class="step-number">3</div>
-                    <div><strong>Seguimiento:</strong> Monitoreo diario y acompañamiento en tus técnicas.</div>
-                </li>
-                <li class="step-item">
-                    <div class="step-number">4</div>
-                    <div><strong>Reevaluación:</strong> Medición de avances periódicamente.</div>
-                </li>
-                <li class="step-item">
-                    <div class="step-number">5</div>
-                    <div><strong>Resultados:</strong> Consecución efectiva de tus objetivos físicos.</div>
-                </li>
-            </ul>
+            <div class="step-list">
+
+                <div class="step-item" onclick="toggleCard(this)">
+                    <div class="step-header">
+                        <div class="step-title-wrapper">
+                            <div class="step-number">1</div>
+                            <strong>Evaluación Inicial</strong>
+                        </div>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Análisis detallado de tu composición corporal, historial deportivo, posibles limitaciones físicas y objetivos a corto, mediano y largo plazo.
+                    </div>
+                </div>
+
+                <div class="step-item" onclick="toggleCard(this)">
+                    <div class="step-header">
+                        <div class="step-title-wrapper">
+                            <div class="step-number">2</div>
+                            <strong>Planificación</strong>
+                        </div>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Diseño de un macrociclo y microciclos de entrenamiento personalizados con base en ciencia para maximizar cada sesión de entrenamiento.
+                    </div>
+                </div>
+
+                <div class="step-item" onclick="toggleCard(this)">
+                    <div class="step-header">
+                        <div class="step-title-wrapper">
+                            <div class="step-number">3</div>
+                            <strong>Seguimiento Activo</strong>
+                        </div>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Acompañamiento y corrección continua en la técnica de tus ejercicios para prevenir cualquier tipo de sobrecarga o lesión deportiva.
+                    </div>
+                </div>
+
+                <div class="step-item" onclick="toggleCard(this)">
+                    <div class="step-header">
+                        <div class="step-title-wrapper">
+                            <div class="step-number">4</div>
+                            <strong>Reevaluación</strong>
+                        </div>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Monitoreamos métricas físicas de forma periódica para ajustar las cargas, volúmenes y nutrientes de acuerdo con tu rendimiento real.
+                    </div>
+                </div>
+
+                <div class="step-item" onclick="toggleCard(this)">
+                    <div class="step-header">
+                        <div class="step-title-wrapper">
+                            <div class="step-number">5</div>
+                            <strong>Resultados Reales</strong>
+                        </div>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Alcanzamos los hitos planteados con bases sólidas que garantizan la longevidad del rendimiento y hábitos de vida saludables.
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- 4. BENEFICIOS -->
         <section id="beneficios">
             <h2><i class="fas fa-medal"></i> Beneficios del Programa</h2>
-            <ul style="list-style: none; padding-left: 5px;">
-                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Incremento sustancial de la fuerza general.</li>
-                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Aumento de masa muscular de forma estructurada.</li>
-                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Niveles máximos de energía para tu día a día.</li>
-                <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Mayor autonomía funcional y prevención de lesiones.</li>
-            </ul>
+            <div class="step-list">
+                <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
+                    <div class="step-header">
+                        <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Fuerza e Hipertrofia</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Incremento sustancial de la fuerza general y masa muscular estructurada mediante programas científicamente validados.
+                    </div>
+                </div>
+                <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
+                    <div class="step-header">
+                        <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Energía Diaria Elevada</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Optimización de los sistemas metabólicos para que experimentes niveles óptimos y estables de energía durante todo el día.
+                    </div>
+                </div>
+                <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
+                    <div class="step-header">
+                        <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Autonomía y Salud</span>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="step-content">
+                        Mayor movilidad articular, prevención activa de lesiones cotidianas y fortalecimiento de tendones y ligamentos.
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- 5. SERVICIOS -->
         <section id="servicios">
             <h2><i class="fas fa-award"></i> Nuestros Servicios</h2>
             <div class="grid-2">
-                <div class="feature-card" style="border-left-color: #f59e0b;">
-                    <strong>Personalizado</strong><br><small>Entrenamiento Individual</small>
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                    <div class="card-header-click">
+                        <strong>Personalizado</strong>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Entrenamiento Individual presencial o guiado paso a paso con foco 100% en tu biomecánica única.
+                    </div>
                 </div>
-                <div class="feature-card" style="border-left-color: #f59e0b;">
-                    <strong>Rendimiento</strong><br><small>Mejora Deportiva</small>
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                    <div class="card-header-click">
+                        <strong>Rendimiento</strong>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Mejora deportiva para atletas y entusiastas que buscan explotar sus capacidades al límite.
+                    </div>
                 </div>
-                <div class="feature-card" style="border-left-color: #f59e0b;">
-                    <strong>Fuerza</strong><br><small>Acondicionamiento</small>
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                    <div class="card-header-click">
+                        <strong>Fuerza</strong>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Acondicionamiento físico general mediante levantamiento y técnicas de fuerza seguras.
+                    </div>
                 </div>
-                <div class="feature-card" style="border-left-color: #f59e0b;">
-                    <strong>Online</strong><br><small>Asesoría a Distancia</small>
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                    <div class="card-header-click">
+                        <strong>Online</strong>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="card-details">
+                        Asesoría y acompañamiento a distancia de forma estructurada a través de plataformas digitales avanzadas.
+                    </div>
                 </div>
             </div>
         </section>
@@ -273,6 +485,13 @@
     <footer>
         <p>&copy; 2025 EP EVOLVE PERFORMANCE. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- LÓGICA DE INTERACTIVIDAD PARA DESPLEGABLES -->
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
