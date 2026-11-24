@@ -8,12 +8,13 @@
     <style>
         /* VARIABLES DE DISEÑO */
         :root {
-            --bg-dark: #090b0e;
-            --bg-card: #12161c;
+            --bg-dark: #07090e;
+            --bg-card: #0f1319;
             --neon-blue: #00f3ff;
-            --neon-blue-glow: rgba(0, 243, 255, 0.4);
+            --neon-blue-glow: rgba(0, 243, 255, 0.35);
             --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
+            --text-muted: #10b981; /* Verde esmeralda para el contraste */
+            --text-desc: #9ca3af;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -31,46 +32,52 @@
             overflow-x: hidden;
         }
 
-        /* HEADER Y HÉROE */
+        /* HEADER Y HÉROE CON IMAGEN DE FONDO */
         header {
             text-align: center;
-            padding: 80px 20px 40px;
-            background: radial-gradient(circle at top, var(--neon-blue-glow) 0%, transparent 60%);
+            padding: 140px 20px 80px;
+            position: relative;
+            background: linear-gradient(180deg, rgba(7, 9, 14, 0.5) 0%, var(--bg-dark) 100%), 
+                        url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            border-bottom: 2px solid var(--neon-blue-glow);
         }
 
         .logo {
-            font-size: 2.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 0 0 10px var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
             color: var(--neon-blue);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .tagline {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.4rem;
+            color: #e5e7eb;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* CONTENEDOR GENERAL */
+        /* CONTENEDOR GENERAL RESPONSIVO (PC & MÓVIL) */
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
-        /* SECCIONES / TARJETAS */
+        /* SECCIONES */
         section {
             background: var(--bg-card);
-            border: 1px solid rgba(0, 243, 255, 0.15);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s ease;
         }
 
         section:hover {
@@ -78,45 +85,51 @@
         }
 
         h2 {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             color: var(--neon-blue);
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-bottom: 1px solid var(--neon-blue-glow);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        /* GRILLA RESPONSIVA */
-        .grid-2 {
+        /* GRID DE TARJETAS (Autoadaptable para PC y Celular) */
+        .grid-cards {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
-        @media (max-width: 480px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* TARJETAS INTERACTIVAS DESPLEGABLES */
+        /* TARJETAS INTERACTIVAS CON FONDO DE IMAGEN */
         .interactive-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            border-left: 3px solid var(--neon-blue);
+            position: relative;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
             transition: all 0.3s ease;
             overflow: hidden;
-            padding: 15px;
-            position: relative;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
         }
 
+        /* Fondos individuales de tarjetas */
+        .card-fuerza { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop'); }
+        .card-potencia { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=600&auto=format&fit=crop'); }
+        .card-coordinacion { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop'); }
+        .card-resistencia { background-image: linear-gradient(to top, rgba(15,19,25,0.95) 40%, rgba(15,19,25,0.4)), url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600&auto=format&fit=crop'); }
+
         .interactive-card:hover {
-            background: rgba(0, 243, 255, 0.05);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px var(--neon-blue-glow);
+            transform: translateY(-4px);
+            border-color: var(--neon-blue);
         }
 
         .card-header-click {
@@ -124,34 +137,37 @@
             justify-content: space-between;
             align-items: center;
             font-weight: bold;
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .card-header-click i.main-icon {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--neon-blue);
-            margin-right: 10px;
+            margin-right: 12px;
         }
 
         .card-header-click .arrow-icon {
-            color: var(--text-muted);
+            color: #fff;
             transition: transform 0.3s ease;
         }
 
-        /* DETALLE DESPLEGABLE (CERRADO POR DEFECTO) */
+        /* DETALLE DESPLEGABLE */
         .card-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, margin-top 0.3s ease;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.4;
+            transition: max-height 0.35s ease-out, margin-top 0.35s ease;
+            color: var(--text-desc);
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .interactive-card.active .card-details {
-            max-height: 200px; /* Ajustar según longitud de contenido */
-            margin-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 8px;
+            max-height: 180px;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 12px;
         }
 
         .interactive-card.active .arrow-icon {
@@ -159,18 +175,60 @@
             color: var(--neon-blue);
         }
 
+        /* GALERÍA DE IMÁGENES PREMIUM REALES */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        .visual-card {
+            position: relative;
+            border-radius: 15px;
+            height: 260px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .visual-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .visual-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .visual-card .overlay-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(7,9,14,0.9) 0%, transparent 100%);
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         /* PASOS DE METODOLOGÍA */
         .step-list {
-            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
         .step-item {
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 12px;
+            padding: 22px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -178,19 +236,19 @@
 
         .step-item:hover {
             border-color: var(--neon-blue-glow);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .step-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
         }
 
         .step-title-wrapper {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .step-number {
@@ -198,8 +256,8 @@
             color: var(--bg-dark);
             font-weight: bold;
             border-radius: 50%;
-            width: 28px;
-            height: 28px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -211,14 +269,14 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out, margin-top 0.3s ease;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-left: 40px;
+            color: var(--text-desc);
+            font-size: 0.95rem;
+            padding-left: 50px;
         }
 
         .step-item.active .step-content {
             max-height: 150px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .step-item.active .arrow-icon {
@@ -227,8 +285,8 @@
         }
 
         /* BOTÓN DE WHATSAPP */
-        .whatsapp-btn { 
-            display: flex;
+        .whatsapp-btn {
+            display: inline-flex;
             justify-content: center;
             align-items: center;
             gap: 12px;
@@ -236,31 +294,31 @@
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
-            padding: 15px;
+            font-size: 1.25rem;
+            padding: 18px 45px;
             border-radius: 50px;
-            text-align: center;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
         }
 
         .whatsapp-btn:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            padding: 60px 20px;
+            font-size: 0.95rem;
+            color: var(--text-desc);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. INTRODUCCIÓN / HEADER -->
+    <!-- 1. INTRODUCCIÓN / HEADER CON FOTO EN ALTA RESOLUCIÓN -->
     <header>
         <div class="logo">EP EVOLVE PERFORMANCE</div>
         <div class="tagline">Descubre de lo que eres capaz / Vive mejor</div>
@@ -269,16 +327,35 @@
     <div class="container">
 
         <!-- Indicador de Interactividad -->
-        <p style="text-align: center; color: var(--neon-blue); font-size: 0.85rem; margin-bottom: 20px; letter-spacing: 1px;">
-            <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS PARA DESPLEGAR MÁS DETALLES
+        <p style="text-align: center; color: var(--neon-blue); font-size: 1rem; margin-bottom: 35px; letter-spacing: 1px; font-weight: bold;">
+            <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS PARA DESPLEGAR DETALLES
         </p>
+
+        <!-- GALERÍA DE IMÁGENES REALES (Inspirado en el folleto) -->
+        <section id="galeria">
+            <h2><i class="fas fa-images"></i> Galería del Centro & Entrenamiento</h2>
+            <div class="image-gallery">
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" alt="Zona de Fuerza">
+                    <div class="overlay-label"><i class="fas fa-dumbbell"></i> Entrenamiento de Fuerza</div>
+                </div>
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600&auto=format&fit=crop" alt="Acondicionamiento">
+                    <div class="overlay-label"><i class="fas fa-bolt"></i> Alta Intensidad & Potencia</div>
+                </div>
+                <div class="visual-card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" alt="Asesoría">
+                    <div class="overlay-label"><i class="fas fa-user-shield"></i> Asesoría Profesional</div>
+                </div>
+            </div>
+        </section>
 
         <!-- 2. ¿QUÉ DESARROLLAMOS? -->
         <section id="desarrollo">
             <h2><i class="fas fa-bolt"></i> ¿Qué desarrollamos?</h2>
-            <div class="grid-2">
+            <div class="grid-cards">
                 
-                <div class="interactive-card" onclick="toggleCard(this)">
+                <div class="interactive-card card-fuerza" onclick="toggleCard(this)">
                     <div class="card-header-click">
                         <span><i class="fas fa-dumbbell main-icon"></i>Fuerza</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -288,7 +365,7 @@
                     </div>
                 </div>
 
-                <div class="interactive-card" onclick="toggleCard(this)">
+                <div class="interactive-card card-potencia" onclick="toggleCard(this)">
                     <div class="card-header-click">
                         <span><i class="fas fa-running main-icon"></i>Potencia</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -298,7 +375,7 @@
                     </div>
                 </div>
 
-                <div class="interactive-card" onclick="toggleCard(this)">
+                <div class="interactive-card card-coordinacion" onclick="toggleCard(this)">
                     <div class="card-header-click">
                         <span><i class="fas fa-sync-alt main-icon"></i>Coordinación</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -308,7 +385,7 @@
                     </div>
                 </div>
 
-                <div class="interactive-card" onclick="toggleCard(this)">
+                <div class="interactive-card card-resistencia" onclick="toggleCard(this)">
                     <div class="card-header-click">
                         <span><i class="fas fa-heartbeat main-icon"></i>Resistencia</span>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -397,7 +474,7 @@
         <!-- 4. BENEFICIOS -->
         <section id="beneficios">
             <h2><i class="fas fa-medal"></i> Beneficios del Programa</h2>
-            <div class="step-list">
+            <div class="grid-cards">
                 <div class="step-item" onclick="toggleCard(this)" style="border-left: 3px solid var(--neon-blue);">
                     <div class="step-header">
                         <span><i class="fas fa-check" style="color: var(--neon-blue); margin-right: 10px;"></i> Fuerza e Hipertrofia</span>
@@ -431,8 +508,8 @@
         <!-- 5. SERVICIOS -->
         <section id="servicios">
             <h2><i class="fas fa-award"></i> Nuestros Servicios</h2>
-            <div class="grid-2">
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+            <div class="grid-cards">
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
                     <div class="card-header-click">
                         <strong>Personalizado</strong>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -441,7 +518,7 @@
                         Entrenamiento Individual presencial o guiado paso a paso con foco 100% en tu biomecánica única.
                     </div>
                 </div>
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
                     <div class="card-header-click">
                         <strong>Rendimiento</strong>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -450,7 +527,7 @@
                         Mejora deportiva para atletas y entusiastas que buscan explotar sus capacidades al límite.
                     </div>
                 </div>
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
                     <div class="card-header-click">
                         <strong>Fuerza</strong>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -459,7 +536,7 @@
                         Acondicionamiento físico general mediante levantamiento y técnicas de fuerza seguras.
                     </div>
                 </div>
-                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b;">
+                <div class="interactive-card" onclick="toggleCard(this)" style="border-left-color: #f59e0b; background-image: linear-gradient(to top, rgba(15,19,25,0.95) 100%, transparent), url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=400'); background-size: cover;">
                     <div class="card-header-click">
                         <strong>Online</strong>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -471,12 +548,12 @@
             </div>
         </section>
 
-        <!-- 6. CONTACTO (BOTÓN WHATSAPP) -->
+        <!-- 6. CONTACTO (BOTÓN WHATSAPP CENTRADO) -->
         <section id="contacto" style="text-align: center; border-color: #25d366;">
             <h2><i class="fas fa-comments"></i> Contacto Directo</h2>
-            <p style="margin-bottom: 20px; color: var(--text-muted);">¿Listo para dar el primer paso? Habla directamente con nosotros.</p>
+            <p style="margin-bottom: 25px; color: var(--text-desc);">¿Listo para dar el primer paso? Habla directamente con nosotros.</p>
             <a href="https://wa.me/573012430458?text=Hola%20EP%20Evolve%20Performance!%20Me%20interesa%20empezar%20mi%20preparacion%20fisica" target="_blank" class="whatsapp-btn">
-                <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Escríbenos por WhatsApp
+                <i class="fab fa-whatsapp" style="font-size: 1.6rem;"></i> Escríbenos por WhatsApp
             </a>
         </section>
 
