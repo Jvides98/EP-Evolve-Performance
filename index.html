@@ -39,7 +39,7 @@
         /* HEADER Y HÉROE */
         header {
             text-align: center;
-            padding: 160px 20px 100px;
+            padding: 120px 20px 80px;
             position: relative;
             background: linear-gradient(180deg, rgba(7, 9, 14, 0.4) 0%, var(--bg-dark) 100%),
                         url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop') no-repeat center center;
@@ -48,9 +48,9 @@
         }
 
         .logo {
-            font-size: 3.8rem;
+            font-size: 2.8rem;
             font-weight: 900;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             text-shadow: 0 0 25px var(--neon-blue);
             color: var(--neon-blue);
@@ -58,10 +58,10 @@
         }
 
         .tagline {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             font-weight: 700;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
@@ -70,7 +70,8 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 15px;
+            width: 100%;
         }
 
         /* SECCIONES EN MODO OSCURO PREMIUM */
@@ -78,10 +79,12 @@
             background: var(--bg-card);
             border: 1px solid rgba(0, 243, 255, 0.12);
             border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 50px;
+            padding: 30px 20px;
+            margin-bottom: 40px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
             transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            width: 100%;
+            overflow: hidden;
         }
 
         section:hover {
@@ -90,23 +93,24 @@
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--neon-blue);
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-bottom: 1px solid var(--neon-blue-glow);
             padding-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             letter-spacing: 1px;
         }
 
-        /* GALERÍA DE IMÁGENES INTERACTIVAS */
+        /* GALERÍA DE IMÁGENES INTERACTIVAS TOTALMENTE FLUIDAS */
         .image-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
         }
 
         .visual-card {
@@ -118,38 +122,42 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.6);
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            width: 100%;
+            max-width: 100%;
         }
 
         .visual-card img {
             width: 100%;
             height: 100%;
+            max-width: 100%;
             object-fit: cover;
+            display: block;
             transition: transform 0.6s ease;
         }
 
         .visual-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: var(--neon-blue);
             box-shadow: 0 12px 30px var(--neon-blue-glow);
         }
 
         .visual-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .visual-card .overlay-label {
             position: absolute;
             bottom: 0; left: 0; right: 0;
             background: linear-gradient(to top, rgba(7,9,14,0.95) 10%, rgba(7,9,14,0.4) 60%, transparent 100%);
-            padding: 25px;
+            padding: 20px 15px;
             font-weight: bold;
-            font-size: 1.25rem;
-            letter-spacing: 1.5px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
@@ -160,8 +168,9 @@
         /* GRID DE DISCIPLINAS */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            width: 100%;
         }
 
         /* TARJETAS DE DISCIPLINAS MEJORADAS */
@@ -172,13 +181,15 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             overflow: hidden;
-            min-height: 180px;
+            min-height: 160px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 25px;
+            padding: 20px;
             background-size: cover;
             background-position: center;
+            width: 100%;
+            max-width: 100%;
         }
 
         /* Fondos individuales de tarjetas */
@@ -189,32 +200,33 @@
 
         .interactive-card:hover {
             box-shadow: 0 10px 25px var(--neon-blue-glow);
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             border-color: var(--neon-blue);
         }
 
-        .card-header-click { 
+        .card-header-click {
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+            width: 100%;
         }
 
         .card-header-click i.main-icon {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--neon-blue);
-            margin-right: 12px;
+            margin-right: 8px;
         }
 
         .card-tap-hint {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--neon-blue);
-            margin-top: 8px;
+            margin-top: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.8;
@@ -233,7 +245,7 @@
             pointer-events: none;
             transition: opacity 0.4s ease;
             backdrop-filter: blur(8px);
-            padding: 20px;
+            padding: 15px;
         }
 
         .modal-overlay.active {
@@ -245,9 +257,9 @@
             background: var(--bg-card);
             border: 2px solid var(--neon-blue);
             border-radius: 24px;
-            max-width: 600px;
+            max-width: 550px;
             width: 100%;
-            padding: 40px;
+            padding: 30px 20px;
             position: relative;
             box-shadow: 0 0 40px var(--neon-blue-glow);
             transform: translateY(30px);
@@ -276,11 +288,11 @@
 
         .modal-close-btn {
             position: absolute;
-            top: 20px; right: 20px;
+            top: 15px; right: 15px;
             background: none;
             border: none;
             color: #ffffff;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             cursor: pointer;
             transition: color 0.3s ease, transform 0.3s ease;
             z-index: 10;
@@ -292,30 +304,30 @@
         }
 
         .modal-title {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--neon-blue);
             text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         .modal-desc {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: var(--text-desc);
-            line-height: 1.8;
+            line-height: 1.7;
             font-weight: 500;
             border-left: 4px solid var(--neon-blue);
-            padding-left: 20px;
-            margin-bottom: 25px;
+            padding-left: 15px;
+            margin-bottom: 20px;
         }
 
         .modal-accent-box {
             background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -323,30 +335,33 @@
         .modal-accent-box h4 {
             color: var(--accent-green);
             text-transform: uppercase;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .modal-accent-box p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #9ca3af;
         }
 
         /* PASOS DE METODOLOGÍA */
         .step-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            width: 100%;
         }
 
         .step-item {
             background: rgba(255, 255, 255, 0.01);
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 100%;
+            max-width: 100%;
         }
 
         .step-item:hover {
@@ -358,12 +373,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            width: 100%;
         }
 
         .step-title-wrapper {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .step-number {
@@ -371,18 +387,18 @@
             color: var(--bg-dark);
             font-weight: 900;
             border-radius: 50%;
-            width: 38px;
-            height: 38px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 0 12px var(--neon-blue);
-            font-size: 1.1rem;
+            box-shadow: 0 0 10px var(--neon-blue);
+            font-size: 1rem;
         }
 
         .step-item strong {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 0.5px;
         }
 
@@ -391,13 +407,13 @@
             overflow: hidden;
             transition: max-height 0.35s ease-out, margin-top 0.35s ease;
             color: #9ca3af;
-            font-size: 1rem;
-            padding-left: 53px;
+            font-size: 0.95rem;
+            padding-left: 44px;
         }
 
         .step-item.active .step-content {
-            max-height: 150px;
-            margin-top: 15px;
+            max-height: 200px;
+            margin-top: 12px;
         }
 
         .step-item.active .arrow-icon {
@@ -422,32 +438,63 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             background: #25d366;
             color: #ffffff;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.3rem;
-            padding: 20px 50px;
+            font-size: 1.15rem;
+            padding: 15px 35px;
             border-radius: 50px;
             box-shadow: 0 5px 25px rgba(37, 211, 102, 0.45);
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            max-width: 100%;
         }
 
         .whatsapp-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 0 0 30px rgba(37, 211, 102, 0.7);
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 70px 20px;
-            font-size: 1rem;
+            padding: 50px 20px;
+            font-size: 0.9rem;
             color: #9ca3af;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+        }
+
+        /* MEDIA QUERIES ESPECIALES PARA TELÉFONOS */
+        @media (max-width: 768px) {
+            header {
+                padding: 100px 15px 60px;
+            }
+            .logo {
+                font-size: 2.2rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            section {
+                padding: 20px 15px;
+            }
+            .visual-card {
+                height: 210px; /* Reduce la altura en teléfonos para que se vea proporcionado */
+            }
+            .modal-box {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            .modal-desc {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -462,11 +509,11 @@
     <div class="container">
 
         <!-- Indicador de Interactividad -->
-        <p style="text-align: center; color: var(--neon-blue); font-size: 1.1rem; margin-bottom: 40px; letter-spacing: 1.5px; font-weight: 800;">
+        <p style="text-align: center; color: var(--neon-blue); font-size: 1rem; margin-bottom: 30px; letter-spacing: 1px; font-weight: 800; padding: 0 10px;">
             <i class="fas fa-hand-pointer"></i> TOCA LAS TARJETAS O FOTOS PARA NAVEGAR Y EXPLORAR
         </p>
 
-        <!-- GALERÍA DE IMÁGENES INTERACTIVAS (Redirección a las secciones) -->
+        <!-- GALERÍA DE IMÁGENES INTERACTIVAS -->
         <section id="galeria">
             <h2><i class="fas fa-images"></i> Galería interactiva del centro</h2>
             <div class="image-gallery">
@@ -738,7 +785,7 @@
             },
             resistencia: {
                 title: '<i class="fas fa-heartbeat"></i> Resistencia',
-                desc: 'Aumentamos tu umbral anaeróbico y tu eficiencia cardiovascular. Utilizando entrenamientos por intervalos de alta intensidad y acondicionamiento metabólico continuo, tu corazón y pulmones aprenderán a soportar esfuerzos extenuantes y a recuperarse en tiempo récord.',
+                desc: 'Aumentamos tu umbral anaeróbico y tu eficiencia cardiovascular. Utilizando entrenamientos por intervalos de alta intensidad and acondicionamiento metabólico continuo, tu corazón y pulmones aprenderán a soportar esfuerzos extenuantes y a recuperarse en tiempo récord.',
                 accentTitle: 'Capacidad Pulmonar',
                 accentContent: 'Duplica tu energía diaria, optimiza la oxigenación celular y quema calorías de forma prolongada incluso post-entrenamiento.',
                 bgUrl: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600'
@@ -782,7 +829,7 @@
                 document.getElementById('modalAccentTitle').innerText = data.accentTitle;
                 document.getElementById('modalAccentContent').innerText = data.accentContent;
                 document.getElementById('modalBg').style.backgroundImage = `url('${data.bgUrl}')`;
-                
+
                 document.getElementById('customModal').classList.add('active');
             }
         }
