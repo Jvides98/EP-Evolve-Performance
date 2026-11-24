@@ -61,8 +61,7 @@
 
         h1 {
             font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-transform: uppercase;            letter-spacing: 2px;
             color: var(--text-desc);
             margin-bottom: 5px;
         }
@@ -469,25 +468,6 @@
             color: #ffffff;
         }
 
-        .includes-sub { color: var(--text-desc); font-size: 1.05rem; margin: -10px 0 22px; }
-        .include-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 22px; position: relative; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
-        .include-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--neon-blue); }
-        .include-card:hover { transform: translateY(-5px); border-color: var(--neon-blue); box-shadow: 0 8px 30px rgba(0,243,255,0.15); }
-        .include-card .benefit-icon-wrapper { background: var(--neon-blue); color: var(--bg-dark); box-shadow: 0 0 15px var(--neon-blue-glow); }
-        .include-card h3 { font-size: 1.15rem; color: #ffffff; text-transform: uppercase; margin-bottom: 8px; }
-        .include-card p { color: var(--text-desc); font-size: 1rem; line-height: 1.5; }
-        .cta-final { margin-top: 30px; text-align: center; padding: 34px 22px; border-radius: 22px; border: 1.5px solid var(--neon-blue); background: linear-gradient(135deg, rgba(0,243,255,0.10) 0%, rgba(15,19,25,0.95) 100%); box-shadow: 0 0 35px var(--neon-blue-glow); }
-        .cta-final .cta-kicker { color: var(--neon-blue); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 8px; }
-        .cta-final h3 { font-size: clamp(1.6rem, 5vw, 2.4rem); color: #ffffff; text-transform: uppercase; line-height: 1.1; margin-bottom: 10px; }
-        .cta-final .cta-lead { color: var(--text-desc); font-size: 1.05rem; max-width: 560px; margin: 0 auto 22px; }
-        .cta-steps { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
-        .cta-step { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 50px; padding: 8px 18px 8px 8px; font-weight: 600; font-size: 0.95rem; }
-        .cta-step b { width: 28px; height: 28px; border-radius: 50%; background: var(--neon-blue); color: var(--bg-dark); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-        .cta-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--neon-blue); color: var(--bg-dark); text-decoration: none; font-weight: 800; font-size: 1.05rem; padding: 16px 38px; border-radius: 50px; text-transform: uppercase; box-shadow: 0 5px 25px var(--neon-blue-glow); transition: all 0.3s ease; }
-        .cta-btn:hover { transform: scale(1.04); box-shadow: 0 0 35px var(--neon-blue); }
-        .cta-note { margin-top: 16px; color: #9ca3af; font-size: 0.9rem; }
-        .cta-note strong { color: #ffffff; }
-
         /* MODAL */
         .modal-overlay {
             position: fixed;
@@ -572,6 +552,37 @@
             font-size: 0.95rem;
             color: var(--text-desc);
             line-height: 1.6;
+        }
+
+        /* CONTACTO */
+        .whatsapp-container {
+            text-align: center;
+            margin: 10px 0 25px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
         /* FOOTER */
@@ -690,48 +701,74 @@
         </div>
     </section>
 
-    <!-- QUÉ INCLUYE + CIERRE -->
+    <!-- TARJETAS INTERACTIVAS ANIMADAS: ¿QUÉ INCLUYE TU PROGRAMA? -->
     <section>
-        <h2><i class="fa-solid fa-circle-check"></i> Esto es lo que recibes</h2>
-        <p class="includes-sub">Un plan completo para que tú solo te ocupes de entrenar.</p>
+        <h2><i class="fa-solid fa-circle-check"></i> ¿Qué incluye tu programa?</h2>
         <div class="benefits-grid">
-            <div class="include-card">
-                <div class="benefit-icon-wrapper"><i class="fa-solid fa-calendar-check"></i></div>
-                <h3>Un plan hecho para ti</h3>
-                <p>Rutinas según tus metas y tu horario. Sin improvisar y sin lesiones.</p>
+            <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                <div class="benefit-icon-wrapper"><i class="fa-solid fa-calendar-alt"></i></div>
+                <div class="benefit-info">
+                    <h3>Planificación Mensual <i class="fa-solid fa-chevron-down"></i></h3>
+                    <p>Rutinas personalizadas según tus objetivos individuales de fuerza o acondicionamiento.</p>
+                </div>
+                <div class="benefit-expandable-content">
+                    <ul class="benefit-bullet-list">
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Microciclos estructurados:</strong> Programación semana a semana adaptada a tu ritmo biológico y de recuperación.</li>
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Fácil de seguir:</strong> Acceso rápido a las explicaciones, series, repeticiones y tiempos de descanso óptimos.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="include-card">
-                <div class="benefit-icon-wrapper"><i class="fa-solid fa-apple-whole"></i></div>
-                <h3>Alimentación que rinde</h3>
-                <p>Pautas de nutrición para recuperarte mejor y ver cambios reales en tu cuerpo.</p>Registrador nutricional adaptado.
-            </div>
-            <div class="include-card">
-                <div class="benefit-icon-wrapper"><i class="fa-solid fa-chart-simple"></i></div>
-                <h3>Progreso que sí se ve</h3>
-                <p>Medimos tu fuerza, peso y porcentaje de grasa para mostrarte cuánto has avanzado.</p>
-            </div>
-            <div class="include-card">
-                <div class="benefit-icon-wrapper"><i class="fa-solid fa-comments"></i></div>
-                <h3>Te acompañamos siempre</h3>
-                <p>Resuelve tus dudas y recibe correcciones de técnica para entrenar con confianza.</p>
-            </div>
-        </div>
 
-        <div class="cta-final">
-            <div class="cta-kicker">Tu evolución comienza hoy</div>
-            <h3>Agenda tu evaluación</h3>
-            <p class="cta-lead">No tienes que ser deportista para entrenar como uno. Empieza conociendo tu estado físico real.</p>
-            <div class="cta-steps">
-                <div class="cta-step"><b>1</b> Evaluación</div>
-                <div class="cta-step"><b>2</b> Diagnóstico</div>
-                <div class="cta-step"><b>3</b> Tu plan a medida</div>
+            <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                <div class="benefit-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+                <div class="benefit-info">
+                    <h3>Guía de Nutrición Básica <i class="fa-solid fa-chevron-down"></i></h3>
+                    <p>Orientación para complementar el entrenamiento con pautas nutricionales funcionales.</p>
+                </div>
+                <div class="benefit-expandable-content">
+                    <ul class="benefit-bullet-list">
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Enfoque energético:</strong> Distribución ideal de macronutrientes basada en tus necesidades calóricas reales.</li>
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Educación alimentaria:</strong> Consejos de hidratación, suplementación recomendada y timing de alimentos.</li>
+                    </ul>
+                </div>
             </div>
-            <a href="https://wa.me/573012430458?text=Hola%2C%20quiero%20agendar%20mi%20evaluaci%C3%B3n%20en%20EP%20Evolve%20Performance" class="cta-btn" target="blank" rel="noopener">
-                <i class="fa-solid fa-calendar-check"></i> Agenda tu evaluación
-            </a>
-            <p class="cta-note">Escríbenos al <strong>301 243 0458</strong></p>
+
+            <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                <div class="benefit-icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="benefit-info">
+                    <h3>Monitoreo de Progreso <i class="fa-solid fa-chevron-down"></i></h3>
+                    <p>Evaluaciones antropométricas periódicas para medir de forma tangible tus avances.</p>
+                </div>
+                <div class="benefit-expandable-content">
+                    <ul class="benefit-bullet-list">
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Gráficos de rendimiento:</strong> Seguimiento visual de fuerza máxima estimada y capacidad cardiovascular de recuperación.</li>
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Ajustes de precisión:</strong> Modificaciones en el volumen de entrenamiento según los resultados evaluados.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="benefit-card-interactive" onclick="toggleBenefit(this)">
+                <div class="benefit-icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+                <div class="benefit-info">
+                    <h3>Soporte y Consultas <i class="fa-solid fa-chevron-down"></i></h3>
+                    <p>Contacto continuo para corregir técnicas de ejercicio y resolver cualquier duda rápidamente.</p>
+                </div>
+                <div class="benefit-expandable-content">
+                    <ul class="benefit-bullet-list">
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Canal prioritario:</strong> Chat de asesoría directa para envío de videos y retroalimentación técnica de levantamientos.</li>
+                        <li><i class="fa-solid fa-circle-notch"></i> <strong>Comunidad de atletas:</strong> Espacio de soporte para mantener el enfoque, la motivación y disciplina a tope.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- CONTACTO -->
+    <div class="whatsapp-container">
+        <a href="https://wa.me/50499999999?text=Hola%20quiero%20unirme%20a%20EP%20Evolve%20Performance" class="whatsapp-btn" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Únete hoy mismo
+        </a>
+    </div>
 
     <!-- MODAL GLOBAL -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
@@ -749,7 +786,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 EP EVOLVE PERFORMANCE. Todos los derechos reservados.</p>
+        <p>&copy; 2025 EP EVOLVE PERFORMANCE. Todos los derechos reservados.</p>
     </footer>
 
     <script>
